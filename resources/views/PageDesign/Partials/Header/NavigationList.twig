@@ -1,0 +1,8 @@
+{% import "Nous42::Category.Macros.CategoryTree" as Tree %}
+
+{% set lang = services.sessionStorage.getLang() %}
+
+<ul class="mainmenu">
+    <li><a href="/"><span class="fa fa-home"></span></a></li>
+    {{ Tree.get_nav_bar(categories, "") }}
+</ul>

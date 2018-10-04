@@ -1,0 +1,43 @@
+{
+    "version"           :   "0.0.1",
+    "license"           :   "AGPL-3.0",
+    "name"              :   "Nous42",
+    "marketplaceName"   :   {"de":"Nous42","en":"Nous42"},
+    "pluginIcon"        :   "icon_plugin_xs.png",
+    "authorIcon"        :   "icon_author_xs.png",
+    "email"             :   "sales@plentymarkets.com",
+    "phone"             :   "+49 561 98 681 100",
+    "description"       :   "A Theme for Ceres.",
+    "shortDescription"  :   { "de": "Ein Theme für Ceres.", "en": "A theme for Ceres." },
+    "namespace"         :   "Nous42",
+    "author"            :   "werk38",
+    "keywords"          :   ["plentymarkets", "plugins", "layout", "theme", "ceres"],
+    "price"             :   0,
+    "categories"        :   [3518],
+    "type"              :   "theme",
+    "require"           :   ["Ceres"],
+    "serviceProvider"   :   "Nous42\\Providers\\Nous42ServiceProvider",
+    "dataProviders"     :
+    [
+        {
+            "key"           :"Nous42\\Containers\\Nous42Container",
+            "name"          :"Stylesheet",
+            "description"   :"Add changes to the CSS file"
+        },
+        {
+            "key"           :"Nous42\\Containers\\Nous42ItemListContainer1",
+            "name"          :"First item list",
+            "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"Nous42\\Containers\\Nous42ItemListContainer2",
+            "name"          :"Second item list",
+            "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"Nous42\\Containers\\Nous42ItemListContainer3",
+            "name"          :"Third item list",
+            "description"   :"Display a configurable list of items in your online store"
+        }
+    ]
+}
