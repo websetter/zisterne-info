@@ -62,6 +62,7 @@
         {% endif %}
 
         {{ startseitenText.details.first.description | raw }}
+        {{ startseitenText.details.first.name | raw }}
 
         <div class="row">
             {% set homepageContainer4 = LayoutContainer.show("Ceres::Homepage.Container4") %}
