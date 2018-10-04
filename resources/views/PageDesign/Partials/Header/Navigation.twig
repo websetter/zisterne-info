@@ -5,7 +5,7 @@
 {% set companyName  = trans("Ceres::Template.headerCompanyName") %}
 {% set useMegaMenu  = config("Ceres.header.megamenu_levels") > 1 %}
 
-<nav class="navbar{% if useMegaMenu %} megamenu{% endif %}">
+<nav class="navbar megamenu">
     <div class="container">
         <div class="row">
               <button id="btnMainMenuToggler" v-open-mobile-navigation class="navbar-toggler hidden-lg-up" type="button">
@@ -18,10 +18,10 @@
                 </ul>
                 {% if showHeaderNavBar == "top" or showHeaderNavBar == "both" or not services.template.isCategory() %}
                     {# includeCached('Ceres::PageDesign.Partials.Header.NavigationList.twig') #}
-                    {% include "ZisterneInfo::PageDesign.Partials.Header.NavigationList" %}
+                    {% include "ZisterneInfo::PageDesign.Partials.Header.NavigationListHardCoded" %}
                 {% endif %}
             </div>
-            
+
         </div>
     </div>
 </nav>
