@@ -1,6 +1,6 @@
 <?php
 
-namespace Nous42\Providers;
+namespace ZisterneInfo\Providers;
 
 use Ceres\Caching\NavigationCacheSettings;
 use Ceres\Caching\SideNavigationCacheSettings;
@@ -14,10 +14,10 @@ use Plenty\Plugin\ConfigRepository;
 
 
 /**
- * Class Nous42ServiceProvider
- * @package Nous42\Providers
+ * Class ZisterneInfoServiceProvider
+ * @package ZisterneInfo\Providers
  */
-class Nous42ServiceProvider extends ServiceProvider
+class ZisterneInfoServiceProvider extends ServiceProvider
 {
     const PRIORITY = 0;
 
@@ -29,13 +29,13 @@ class Nous42ServiceProvider extends ServiceProvider
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
 
-        $enabledOverrides = explode(", ", $config->get("Nous42.templates.override"));
+        $enabledOverrides = explode(", ", $config->get("ZisterneInfo.templates.override"));
 
         // Override partials
         $dispatcher->listen('IO.init.templates', function (Partial $partial) use ($enabledOverrides)
         {
-            pluginApp(Container::class)->register('Nous42::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
-            pluginApp(Container::class)->register('Nous42::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
+            pluginApp(Container::class)->register('ZisterneInfo::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
+            pluginApp(Container::class)->register('ZisterneInfo::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
 
             $partial->set('head', 'Ceres::PageDesign.Partials.Head');
             $partial->set('header', 'Ceres::PageDesign.Partials.Header.Header');
@@ -44,22 +44,22 @@ class Nous42ServiceProvider extends ServiceProvider
 
             if (in_array("head", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
-                $partial->set('head', 'Nous42::PageDesign.Partials.Head');
+                $partial->set('head', 'ZisterneInfo::PageDesign.Partials.Head');
             }
 
             if (in_array("header", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
-                $partial->set('header', 'Nous42::PageDesign.Partials.Header.Header');
+                $partial->set('header', 'ZisterneInfo::PageDesign.Partials.Header.Header');
             }
 
             if (in_array("page_design", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
-                $partial->set('page-design', 'Nous42::PageDesign.PageDesign');
+                $partial->set('page-design', 'ZisterneInfo::PageDesign.PageDesign');
             }
 
             if (in_array("footer", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
-                $partial->set('footer', 'Nous42::PageDesign.Partials.Footer');
+                $partial->set('footer', 'ZisterneInfo::PageDesign.Partials.Footer');
             }
 
             return false;
@@ -71,7 +71,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.home', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Homepage.Homepage');
+                $container->setTemplate('ZisterneInfo::Homepage.Homepage');
                 return false;
             }, self::PRIORITY);
         }
@@ -82,7 +82,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.category.content', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Category.Content.CategoryContent');
+                $container->setTemplate('ZisterneInfo::Category.Content.CategoryContent');
                 return false;
             }, self::PRIORITY);
         }
@@ -93,7 +93,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.category.item', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Category.Item.CategoryItem');
+                $container->setTemplate('ZisterneInfo::Category.Item.CategoryItem');
                 return false;
             }, self::PRIORITY);
         }
@@ -104,7 +104,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.basket', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Basket.Basket');
+                $container->setTemplate('ZisterneInfo::Basket.Basket');
                 return false;
             }, self::PRIORITY);
         }
@@ -115,7 +115,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.checkout', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Checkout.Checkout');
+                $container->setTemplate('ZisterneInfo::Checkout.Checkout');
                 return false;
             }, self::PRIORITY);
         }
@@ -126,7 +126,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.confirmation', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Checkout.OrderConfirmation');
+                $container->setTemplate('ZisterneInfo::Checkout.OrderConfirmation');
                 return false;
             }, self::PRIORITY);
         }
@@ -137,7 +137,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.login', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Customer.Login');
+                $container->setTemplate('ZisterneInfo::Customer.Login');
                 return false;
             }, self::PRIORITY);
         }
@@ -148,7 +148,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.register', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Customer.Register');
+                $container->setTemplate('ZisterneInfo::Customer.Register');
                 return false;
             }, self::PRIORITY);
         }
@@ -159,7 +159,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.item', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::Item.SingleItemWrapper');
+                $container->setTemplate('ZisterneInfo::Item.SingleItemWrapper');
                 return false;
             }, self::PRIORITY);
         }
@@ -170,7 +170,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.search', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::ItemList.ItemListView');
+                $container->setTemplate('ZisterneInfo::ItemList.ItemListView');
                 return false;
             }, self::PRIORITY);
         }
@@ -181,7 +181,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.my-account', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::MyAccount.MyAccount');
+                $container->setTemplate('ZisterneInfo::MyAccount.MyAccount');
                 return false;
             }, self::PRIORITY);
         }
@@ -192,7 +192,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.cancellation-rights', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::StaticPages.CancellationRights');
+                $container->setTemplate('ZisterneInfo::StaticPages.CancellationRights');
                 return false;
             }, self::PRIORITY);
         }
@@ -203,7 +203,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.legal-disclosure', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::StaticPages.LegalDisclosure');
+                $container->setTemplate('ZisterneInfo::StaticPages.LegalDisclosure');
                 return false;
             }, self::PRIORITY);
         }
@@ -214,7 +214,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.privacy-policy', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::StaticPages.PrivacyPolicy');
+                $container->setTemplate('ZisterneInfo::StaticPages.PrivacyPolicy');
                 return false;
             }, self::PRIORITY);
         }
@@ -225,7 +225,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.terms-conditions', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::StaticPages.TermsAndConditions');
+                $container->setTemplate('ZisterneInfo::StaticPages.TermsAndConditions');
                 return false;
             }, self::PRIORITY);
         }
@@ -236,7 +236,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.item-not-found', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::StaticPages.ItemNotFound');
+                $container->setTemplate('ZisterneInfo::StaticPages.ItemNotFound');
                 return false;
             }, self::PRIORITY);
         }
@@ -247,7 +247,7 @@ class Nous42ServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.page-not-found', function (TemplateContainer $container)
             {
-                $container->setTemplate('Nous42::StaticPages.PageNotFound');
+                $container->setTemplate('ZisterneInfo::StaticPages.PageNotFound');
                 return false;
             }, self::PRIORITY);
         }

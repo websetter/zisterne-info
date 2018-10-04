@@ -1,4 +1,4 @@
-# Release Notes für Nous42
+# Release Notes für ZisterneInfo
 
 ## v0.0.1 (2017-08-02)
 

@@ -1,13 +1,13 @@
 {{ services.lastSeen.setLastSeenMaxCount(config("Ceres.item.lists.last_seen_number")) }}
 
-{{ component( "Nous42::Item.Components.VariationSelect" ) }}
-{{ component( "Nous42::Item.Components.ItemImageCarousel" ) }}
+{{ component( "ZisterneInfo::Item.Components.VariationSelect" ) }}
+{{ component( "ZisterneInfo::Item.Components.ItemImageCarousel" ) }}
 {{ component( "Ceres::Item.Components.AddToWishList" ) }}
 {{ component( "Ceres::Item.Components.OrderProperties" ) }}
 {{ component( "Ceres::Item.Components.OrderPropertyList" ) }}
-{{ component( "Nous42::Item.Components.SingleItem" ) }}
+{{ component( "ZisterneInfo::Item.Components.SingleItem" ) }}
 {{ component( "Ceres::Item.Components.GraduatedPrices" ) }}
-{{ component( "Nous42::Basket.Components.AddToBasket" ) }}
+{{ component( "ZisterneInfo::Basket.Components.AddToBasket" ) }}
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 
 <single-item v-cloak template="#vue-single-item" :item-data="{{ item | json_encode }}" :variation-list-data="{{ variations | json_encode }}" :attribute-name-map="{{attributeNameMap | json_encode}}">
