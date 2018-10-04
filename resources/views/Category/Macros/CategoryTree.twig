@@ -1,6 +1,6 @@
 {% macro get_children(category, currentScopeUrl, level) %}
-    {% set megaMenuLevels = not config('Ceres.header.megamenu_levels') ? 1 : config('Ceres.header.megamenu_levels') %}
-    {% set maxitems = { "1": config('Ceres.header.megamenu_items_stage_1'), "2": config('Ceres.header.megamenu_items_stage_2') ,"3": config('Ceres.header.megamenu_items_stage_3')} %}
+    {% set megaMenuLevels = 3 %}
+    {% set maxitems = { "1": 10, "2": 10 ,"3": 10} %}
     {% import _self as childlist %}
     {% set counter = 0 %}
     {% if level < megaMenuLevels %}
@@ -27,7 +27,7 @@
 {% macro get_nav_bar(categories, currentScopeUrl) %}
     {% import _self as navbar %}
     {% set counter = 0 %}
-    {% set megaMenuLevels = not config('Ceres.header.megamenu_levels') ? 1 : config('Ceres.header.megamenu_levels') %}
+      {% set megaMenuLevels = 3 %}
 
     {% for category in categories %}
 

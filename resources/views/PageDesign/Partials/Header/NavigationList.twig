@@ -2,7 +2,6 @@
 
 {% set lang = services.sessionStorage.getLang() %}
 
-<ul class="mainmenu">
-    <li><a href="/"><span class="fa fa-home"></span></a></li>
+<ul class="mainmenu">  
     {{ Tree.get_nav_bar(categories, "") }}
 </ul>
