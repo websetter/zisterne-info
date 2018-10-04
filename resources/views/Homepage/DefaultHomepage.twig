@@ -54,9 +54,14 @@
             <span class="sr-only">Weiter</span>
           </a>
         </div>
-        
+
     <div class="home container-max">
 
+        {% if startseitenText is not defined %}
+          {% set startseitenText = services.category.get(1109, lang) %}
+        {% endif %}
+
+        {{ startseitenText.details.first.description | raw }}
 
         <div class="row">
             {% set homepageContainer4 = LayoutContainer.show("Ceres::Homepage.Container4") %}
