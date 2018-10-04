@@ -1,63 +1,121 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-
-{% set numberOfCols = config('Ceres.footer.number_of_cols') %}
-{% set displayedCategories = [] %}
-
 <footer>
-
-  <div class="container footer-content">
+  <div class="container footerTop">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-3">
-          <h4>{{ trans('Ceres::Template.footerColumnTitle1') }}</h4>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+          <p class="headline">FAQ</p>
           <ul class="list-unstyled">
-            <li><a href="{{ urls.gtc }}">{{ trans('Ceres::Template.checkoutGtc') }}</a></li>
-            <li><a href="{{ urls.privacyPolicy }}">{{ trans('Ceres::Template.footerColumnVorteil3') }}</a></li>
-            <li><a href="{{ urls.cancellationRights }}">{{ trans('Ceres::Template.footerLinkCancellationRight') }}</a></li>
-            <li><a href="{{ trans("Ceres::Template.linkShippingCosts") }}">{{ trans('Ceres::Template.itemShippingCosts') }}</a></li>
-            <li><a href="{{ urls.contact }}">{{ trans('Ceres::Template.contact') }}</a></li>
-            <li><a href="{{ urls.legalDisclosure }}">{{ trans('Ceres::Template.footerLegalDisclosure') }}</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
           </ul>
       </div>
-      {% for i in 1..numberOfCols %}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <h4>{{ trans('Ceres::Template.footerColumnTitle2') }}</h4>
-            <ul class="list-unstyled links">
-              {% set footerCategories = config('Ceres.footer.col_' ~ i ~ '_categories') | find("[0-9]+") %}
-              {% for catID in footerCategories %}
-
-                {% set cat = services.category.get(catID, lang) %}
-
-                {% if cat is not null %}
-                  {% set displayedCategories = displayedCategories | merge([catID]) %}
-                  <li>
-                    <a href="{{ services.category.getURL( cat ) }}">
-                      {{ cat.details.first.name }}</a>
-                  </li>
-                {% endif %}
-
-              {% endfor %}
-            </ul>
-        </div>
-      {% endfor %}
-      <div class="col-xs-12 col-sm-6 col-md-3">
-          <h4>{{ trans('Ceres::Template.footerColumnTitle3') }}</h4>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+          <p class="headline">Mediathek</p>
           <ul class="list-unstyled">
-            <li>{{ trans('Ceres::Template.footerColumnVorteil1') }}</li>
-            <li>{{ trans('Ceres::Template.footerColumnVorteil2') }}</li>
-            <li>{{ trans('Ceres::Template.footerColumnVorteil3') }}</li>
-            <li>{{ trans('Ceres::Template.footerColumnVorteil4') }}</li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
           </ul>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-          <h4>{{ trans('Ceres::Template.footerColumnTitle4') }}</h4>
-          <ul class="list-unstyled icons">
-            <li><a href="/ZisterneInfo/versandkosten"><span>Vorkasse</span></a></li>
-            <li><a href="/ZisterneInfo/versandkosten"><img src="https://cdn03.plentymarkets.com/jbguwzfozvwm/frontend/theme/img/paypal.png" alt="PayPal Logo"/></a></li>
-            <li><a href="/ZisterneInfo/versandkosten"><img src="https://cdn03.plentymarkets.com/jbguwzfozvwm/frontend/theme/img/dhl.png" alt="DHL Logo"/></a></li>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+          <p class="headline">Social media</p>
+          <ul class="list-unstyled">
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
           </ul>
-          <p>&copy; {{ "now" | date("Y") }} ZisterneInfo | <a href="https://www.werk38.de/" title="WERK38 | Manufaktur für Print &amp; Web" >WERK38</a><br><small>{{ trans('Ceres::Template.footerColumnPreisHinweis') }}</small></p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+          <p class="headline">Optionales Feld</p>
+          <ul class="list-unstyled">
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+            <li><a title="" href="">Lorem Ipsum</a></li>
+          </ul>
       </div>
     </div>
   </div>
-  <a href="#" title="zum Seitenanfang" class="scrollToTop" style="display: none;"><i class="fa fa-chevron-up"></i></a>
-</footer>
+  <div class="footerMiddle">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4">
+              <p class="headline">Einkaufen</p>
+              <ul class="list-unstyled">
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+              <p class="headline">Unternehmen</p>
+              <ul class="list-unstyled">
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+              <p class="headline">Kontakt</p>
+              <p>07162 80 6 80 70<br>mail@braun-gmbh.eu</p>
+              <p>Telefonisch erreichbar:<br><span class="tabStop">Mo-Do:</span>07:30 - 12:30<br><span class="tabStop"></span>13:00 - 16:30<br><span class="tabStop">Fr:</span>07:30 - 12:30<br><span class="tabStop"></span>13:00 - 14:00</p>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 icons">
+              <p class="headline">Zahlungsarten</p>
+              <ul class="list-unstyled">
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+              </ul>
+              <p class="headline">Versandarten</p>
+              <ul class="list-unstyled">
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+                <li><a title="" href="">Lorem Ipsum</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="footerBottom">
+      <div class="container">
+        <img src="https://cdn02.plentymarkets.com/yi9z0xbw5t14/frontend/zisterneInfo/ceres/img/braun-gmbh-logo.png" alt="Braun GmbH Logo" />
+      </div>
+    </div>
+  </footer>   
