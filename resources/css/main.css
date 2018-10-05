@@ -10,9 +10,57 @@ img {
 strong {
 	font-weight: bold;
 }
+.container-max {
+	width: 1230px;
+}
+.container {
+	max-width: 1200px;
+}
 /*-------------------------------------------------
       Header
 ---------------------------------------------------*/
+header {
+	background: #fff;
+}
+header .middle {
+	padding: 25px 15px;
+}
+header #logo {
+	max-width: 285px;
+	float: left;
+}
+header #searchBox {
+	max-width: 590px;
+	float: left;
+}
+header #searchBox input {
+	width: 590px;
+	height: 55px;
+	border: 0;
+	box-shadow: none;
+	text-shadow: none;
+	background: #e3e3e3;
+}
+header #searchBox button {
+		width: 62px;
+    background: #666;
+    border: 0;
+    color: #fff;
+    font-size: 30px;
+}
+header #searchBox ..search-box-shadow-frame {
+	box-shadow: none;
+}
+header #tuvSued {
+	max-width: 285px;
+	float: left;
+	background: #e3e3e3;
+	font-size: 34px;
+	font-weight: bold;
+	text-align: center;
+	padding: 8px;
+	height: 55px;
+}
 #topBar {
 	background: #666;
 }
