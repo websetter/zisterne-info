@@ -1,22 +1,24 @@
-{% macro get_children(category, currentScopeUrl, level) %}
-    {% set megaMenuLevels = 3 %}
-    {% set maxitems = { "1": 10, "2": 10 ,"3": 10} %}
+{% macro get_children(category, currentScopeUrl, level, megaMenuLevels, maxItems) %}
+    {% set megaMenuLevels = megaMenuLevels | default(1) %}
+    {% set maxItems = maxItems | default({"1": 30, "2": 3, "3": 2}) %}
     {% import _self as childlist %}
     {% set counter = 0 %}
+    <!-- {{ megaMenuLevels | json_encode }} -->
+    <!-- {{ maxItems | json_encode }} -->
     {% if level < megaMenuLevels %}
-        {% for child in category.children if counter < maxitems[level] %}
+        {% for child in category.children if counter < maxItems[level] %}
             {% if (child.details | length > 0) %}
                 <li class="level{{ level }}">
                     {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
                     <a href="{{ newScope }}{{ urls.trailingSlashSuffix }}" v-render-category="{ id: {{ child.id }}, type: '{{ child.type }}', scrollToTop: 600 }">{{ child.details[0].name }}</a>
                     {% if child.children %}
                         {% if level == 1 %}<ul>{% endif %}
-                        {{ childlist.get_children(child, newScope, level + 1) }}
+                        {{ childlist.get_children(child, newScope, level + 1, megaMenuLevels, maxItems) }}
                         {% if level == 1 %}</ul>{% endif %}
                     {% endif %}
                 </li>
                 {% set counter = counter + 1 %}
-                {% if counter == maxitems[level]%}
+                {% if counter == maxItems[level]%}
                     <li class="level{{ level }} bt-more"><a href="{{ currentScopeUrl }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', scrollToTop: 600 }">{{ trans("Ceres::Template.itemShowMore") }}...</a></li>
                 {% endif %}
             {% endif %}
@@ -24,10 +26,10 @@
     {% endif %}
 {% endmacro %}
 
-{% macro get_nav_bar(categories, currentScopeUrl) %}
+{% macro get_nav_bar(categories, currentScopeUrl, megaMenuLevels, maxItemsPerStage) %}
     {% import _self as navbar %}
     {% set counter = 0 %}
-      {% set megaMenuLevels = 3 %}
+    {% set megaMenuLevels = megaMenuLevels | default(1) %}
 
     {% for category in categories %}
 
@@ -45,7 +47,7 @@
 
             {% if category.children and translatedChildren > 0 %}
 
-                <li class="ddown{% for breadcrumb in breadcrumbs %}{% if category.id == breadcrumb.id %} active{% endif %}{% endfor %}" v-update-sidenav-selection="$store.getters.breadcrumbs" data-category-id="{{ category.id }}" v-hover-mega-menu>
+                <li class="ddown" v-hover-mega-menu>
                     <a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', scrollToTop: 600 }">{{ category.details[0].name }}</a>
 
                     <span class="hidden-lg-up nav-direction" data-toggle="collapse" href="#navDropdown{{ counter }}" aria-expanded="false">
@@ -54,7 +56,7 @@
 
                     <ul data-level="1" id="navDropdown{{ counter }}" class="collapse">
                         {% set counter = counter + 1 %}
-                        {% if megaMenuLevels == "1" %}
+                        {% if megaMenuLevels == 1 %}
                             {% for child in category.children %}
                                 {% if child.details | length > 0 %}
                                     <li>
@@ -63,14 +65,14 @@
                                 {% endif %}
                             {% endfor %}
                         {% else %}
-                            {{ navbar.get_children(category, currentScopeUrl, 1) }}
+                            {{ navbar.get_children(category, currentScopeUrl, 1, megaMenuLevels, maxItemsPerStage) }}
                         {% endif %}
                     </ul>
                 </li>
 
             {% else %}
 
-                <li class="{% for breadcrumb in breadcrumbs %}{% if category.id == breadcrumb.id %} active{% endif %}{% endfor %}" v-update-sidenav-selection="$store.getters.breadcrumbs" data-category-id="{{ category.id }}">
+                <li>
                     <a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', alwaysOpen: true, scrollToTop: 600 }">{{ category.details[0].name }}</a>
                 </li>
 
@@ -92,7 +94,7 @@
         {% if category.details[0] %}
             <ul>
                 <li class="nav-item{% for breadcrumb in breadcrumbs %}{% if category.id == breadcrumb.id %} active{% endif %}{% endfor %}" v-update-sidenav-selection="$store.getters.breadcrumbs" data-category-id="{{ category.id }}">
-                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', alwaysOpen: true }">{{ category.details[0].name }}</a>
+                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', alwaysOpen: true, scrollToTop: 600 }">{{ category.details[0].name }}</a>
                     {% if category.children is not empty %}
                         {{ sidemenu.get_sidemenu(breadcrumbs, category.children, urlNow) }}
                     {% endif %}

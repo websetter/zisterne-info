@@ -20,10 +20,12 @@
     {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
       <aside class="col-xs-4">
         <div class="sidebar-categories">
-            {{ include('Ceres::PageDesign.Partials.Header.SideNavigation.twig') }}
+          <p class="asideHeadline">Kategorien</p>
+            {{ include('ZisterneInfo::PageDesign.Partials.Header.SideNavigation.twig') }}
         </div>
         {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
         <div class="filterPanel">
+            <p class="asideHeadline">Produktfilter</p>
             {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
             {% if overrideSearchFilters | trim is empty %}
                 <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
@@ -31,6 +33,7 @@
                 {{ overrideSearchFilters }}
             {% endif %}
           </div>
+            <p class="asideHeadline">Sortierung</p>
           <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
       <items-per-page
               template="#vue-items-per-page"
