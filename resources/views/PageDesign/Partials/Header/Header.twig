@@ -17,8 +17,9 @@
 
 <header class="pos-f-t">
     <div>
-        <div class="container-max">
+
           <div id="topBar">
+            <div class="container-max">
               <ul id="headerLinks">
                 <li><i class="fa fa-check-circle"></i>{{ trans("ZisterneInfo::Template.headerHotlineTxt") }} <a title="Rufen Sie uns an!" href="tel:{{ trans("ZisterneInfo::Template.headerHotlineNr") }}">{{ trans("ZisterneInfo::Template.headerHotlineNr") }}</a></li>
                 <li><i class="fa fa-check-circle"></i>{{ trans("ZisterneInfo::Template.headerSSL") }}</li>
@@ -58,6 +59,8 @@
                     </li>
                 </ul>
               </div>
+            </div>
+            <div class="container-max">
                 <div id="logo">
                     <a href="{{ homepageURL }}">
                         {% if ('http' in companyLogo) or ('layout/' in companyLogo) %}

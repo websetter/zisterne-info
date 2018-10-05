@@ -10,9 +10,30 @@ img {
 strong {
 	font-weight: bold;
 }
+/*-------------------------------------------------
+      Header
+---------------------------------------------------*/
+#topBar {
+	background: #666;
+}
+#headerLinks {
+  padding: 0
+}
+#headerLinks li {
+    display: inline-block;
+    margin-right: 10px;
+		color: #fff;
+}
+#headerLinks li a,
+#topBar a {
+		color: #fff;
+}
+#headerLinks li .fa {
+		color: #56ad0e;
+}
 /*-----------------------------------------------
   main
 -------------------------------------------------*/
-main {
+.main {
   margin-top: 350px;
 }
