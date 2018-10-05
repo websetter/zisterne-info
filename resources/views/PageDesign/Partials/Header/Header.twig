@@ -16,9 +16,8 @@
 {% set companyLogo  = config("Ceres.header.company_logo") %}
 
 <header class="pos-f-t">
-    <div>
 
-          <div id="topBar">
+        <div id="topBar">
             <div class="container-max">
               <ul id="headerLinks">
                 <li><i class="fa fa-check-circle"></i>{{ trans("ZisterneInfo::Template.headerHotlineTxt") }} <a title="Rufen Sie uns an!" href="tel:{{ trans("ZisterneInfo::Template.headerHotlineNr") }}">{{ trans("ZisterneInfo::Template.headerHotlineNr") }}</a></li>
@@ -78,7 +77,11 @@
                 </div>
         </div>
         {% include "ZisterneInfo::PageDesign.Partials.Header.Navigation" %}
-    </div>
+        {% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() %}
+          <div id="breadrcumbs">
+            {% include "Tiervital::PageDesign.Partials.Header.Breadcrumb" %}
+          </div>
+        {% endif %}
 </header>
 
 
