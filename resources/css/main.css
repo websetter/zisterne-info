@@ -1,6 +1,11 @@
 /*-------------------------------------------------
       Allgemein
 ---------------------------------------------------*/
+body {
+	font-family: 'Verdana';
+	color: #1d1d1b;
+	font-size: 14px;
+}
 body > #vue-app, body > #vue-error, .page-content {
 	background-color: #ffffff;
 }
@@ -11,7 +16,7 @@ strong {
 	font-weight: bold;
 }
 .container-max {
-	width: 1230px;
+	max-width: 1230px;
 }
 .container {
 	max-width: 1200px;
@@ -32,6 +37,7 @@ header #logo {
 header #searchBox {
 	max-width: 590px;
 	float: left;
+	margin: 0 20px;
 }
 header #searchBox input {
 	width: 590px;
@@ -39,7 +45,7 @@ header #searchBox input {
 	border: 0;
 	box-shadow: none;
 	text-shadow: none;
-	background: #e3e3e3;
+	background: #f7f7f7;
 }
 header #searchBox button {
 		width: 62px;
@@ -48,36 +54,47 @@ header #searchBox button {
     color: #fff;
     font-size: 30px;
 }
-header #searchBox ..search-box-shadow-frame {
+header #searchBox .search-box-shadow-frame {
 	box-shadow: none;
 }
 header #tuvSued {
-	max-width: 285px;
+	width: 285px;
 	float: left;
 	background: #e3e3e3;
 	font-size: 34px;
 	font-weight: bold;
 	text-align: center;
-	padding: 8px;
+	padding: 4px;
 	height: 55px;
 }
-#topBar {
+header #topBar {
 	background: #666;
+	font-weight: 300;
+	padding: 3px 0;
+	font-size: 13px;
 }
-#headerLinks {
-  padding: 0
+header #topBar ul {
+	margin-bottom: 0;
 }
-#headerLinks li {
+header #controlsList {
+	float: right;
+}
+header #headerLinks {
+  padding: 0;
+	float: left;
+}
+header #headerLinks li {
     display: inline-block;
     margin-right: 10px;
 		color: #fff;
 }
-#headerLinks li a,
-#topBar a {
+header #headerLinks li a,
+header #topBar a {
 		color: #fff;
 }
-#headerLinks li .fa {
+header #headerLinks li .fa {
 		color: #56ad0e;
+		padding-right: 5px;
 }
 /*-----------------------------------------------
   main
