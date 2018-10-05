@@ -50,9 +50,15 @@
               <div id="category-description-container" class="category-description">{{ category.details[0].description | raw }}</div>
 
         </div>
+        <!-- TMP Muss Angepasste werden wenn SubCat exist-->
         <div class="subCat">
-
+          <div class="row">
+            <div class="col-xs-12 col-sm-4"><a href="/" title="/"><span class="subCatTitle"><span>Für Garten</span></span></a></div>
+            <div class="col-xs-12 col-sm-4"><a href="/" title="/"><span class="subCatTitle"><span>Für Haus</span></span></a></div>
+            <div class="col-xs-12 col-sm-4"><a href="/" title="/"><span class="subCatTitle"><span>Für Retention</span></span></a></div>
+          </div>
         </div>
+        <!-- ENDE TMP -->
 
         <div id="twig-rendered-item-list" class="item-list-frame{% if ceresConfig.item.loadingAnimationType == "blur" %} blur-effect{% endif %}">
             {% if ceresConfig.item.loadingAnimationType != "blur" %}
