@@ -9,7 +9,7 @@
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
 
-    <div class="categoriegrid page-content container itemListView{% if isSearch %} searchPage{% endif %}">
+    <main class="categoriegrid page-content container itemListView{% if isSearch %} searchPage{% endif %}">
         <div class="row">
             <div class="col-xs-12">
                 <h1 class="h2" id="searchPageTitle">{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }}</h1>
@@ -66,7 +66,7 @@
             </div>
         {% endif %}
 
-    </div>
+    </main>
 
 {% endblock %}
 

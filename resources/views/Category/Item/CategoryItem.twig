@@ -15,7 +15,24 @@
 
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
-    <div class="categoriegrid page-content container categoryItem cat-id-{{ category.id}}">
+    {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
+      <aside>
+        <div class="sidebar-categories">
+            {{ include('Ceres::PageDesign.Partials.Header.SideNavigation.twig') }}
+        </div>
+        {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
+        <div class="filterPanel">
+            {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
+            {% if overrideSearchFilters | trim is empty %}
+                <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
+            {% else %}
+                {{ overrideSearchFilters }}
+            {% endif %}
+          </div>
+      </aside>
+    {% endif %}
+
+    <main class="{% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}hasAside {% endif %}categoriegrid page-content container categoryItem cat-id-{{ category.id}}">
         {% if not ceresConfig.item.showCategoryImage %}
             <div class="row">
                 <div class="col-xs-12">
@@ -87,7 +104,7 @@
                 </div>
             </div>
         {% endif %}
-    </div>
+    </main>
 
 {% endblock %}
 
