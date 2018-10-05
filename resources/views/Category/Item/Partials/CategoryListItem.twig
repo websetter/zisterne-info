@@ -44,7 +44,7 @@
               {% if item.data.prices.rrp is defined and item.data.prices.rrp.price.value != 0 and item.data.prices.rrp.price.value > item.data.prices.default.unitPrice.value %}
                   <div class="price-view-port">
                       <span class="crossprice">
-                          {{ item.data.prices.rrp.price.formatted }}
+                         {{ trans("ZisterneInfo::Template.UVP") }} {{ item.data.prices.rrp.price.formatted }}
                       </span>
                   </div>
               {% endif %}
