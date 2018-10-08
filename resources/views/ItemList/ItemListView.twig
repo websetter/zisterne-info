@@ -9,44 +9,34 @@
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
 
-    <main class="categoriegrid page-content container itemListView{% if isSearch %} searchPage{% endif %}">
+    {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
+      <aside class="col-xs-3">
+        <div class="sidebar-categories">
+          <p class="asideHeadline">Kategorien</p>
+            {{ include('ZisterneInfo::PageDesign.Partials.Header.SideNavigation.twig') }}
+        </div>
+        {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
+        <div class="filterPanel">
+            <p class="asideHeadline">Produktfilter</p>
+            {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
+            {% if overrideSearchFilters | trim is empty %}
+                <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
+            {% else %}
+                {{ overrideSearchFilters }}
+            {% endif %}
+          </div>
+            <p class="asideHeadline">Sortierung</p>
+          <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
+      <items-per-page
+              template="#vue-items-per-page"
+              :pagination-values="{{ searchOptions.itemsPerPage | json_encode }}"></items-per-page>
+      </aside>
+    {% endif %}
+    <main class="{% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}col-sm-9 {% endif %}categoriegrid page-content container itemListView{% if isSearch %} searchPage{% endif %}">
+
         <div class="row">
             <div class="col-xs-12">
                 <h1 class="h2" id="searchPageTitle">{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }}</h1>
-            </div>
-        </div>
-
-        <div class="list-controls">
-            <div class="list-controls-inner">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="list-wrapper">
-                            <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
-                            {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets) %}
-                            {% if overrideSearchFilters | trim is empty %}
-                                <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
-                            {% else %}
-                                {{ overrideSearchFilters }}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <item-filter-tag-list></item-filter-tag-list>
-        </div>
-
-        {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
-            <div class="list-controls row">
-                <div class="col-xs-12">
-                    <pagination template="#vue-pagination"></pagination>
-                </div>
-            </div>
-        {% endif %}
-
-        <div class="row">
-            <div class="col-xs-12">
-
                 <div id="vue-rendered-item-list" class="item-list-frame">
                     <item-list
                         :item-data="{{ itemList | json_encode }}"
@@ -57,7 +47,6 @@
 
             </div>
         </div>
-
         {% if ceresConfig.pagination.position in ['bottom', 'top_bottom'] %}
             <div class="list-controls row">
                 <div class="col-xs-12">
@@ -65,7 +54,6 @@
                 </div>
             </div>
         {% endif %}
-
     </main>
 
 {% endblock %}
