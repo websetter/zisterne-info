@@ -77,13 +77,12 @@
                 </div>
         </div>
         {% include "ZisterneInfo::PageDesign.Partials.Header.Navigation" %}
-        {% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() %}
-          <div id="breadrcumbs">
-            {% include "ZisterneInfo::PageDesign.Partials.Header.Breadcrumb" %}
-          </div>
-        {% endif %}
 </header>
-
+{% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() %}
+  <div id="breadcrumbs">
+    {% include "ZisterneInfo::PageDesign.Partials.Header.Breadcrumb" %}
+  </div>
+{% endif %}
 
 {% if category.linklist == "Y" %}
     {% set initialCategory = { id: category.id } %}
