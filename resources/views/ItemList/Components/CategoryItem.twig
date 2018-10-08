@@ -30,7 +30,7 @@
                         </category-image-carousel>
                     </div>
                 </div>
-            </div> 
+            </div>
             <hr>
             <div class="thumb-content">
             <a :href="itemData | itemURL" class="thumb-title">
@@ -40,7 +40,7 @@
                     <div class="prices">
                         <div v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0 && itemData.prices.rrp.price.value > itemData.prices.default.unitPrice.value" class="price-view-port">
                             <span class="crossprice">
-                                ${ itemData.prices.rrp.price.formatted }
+                                {{ trans("ZisterneInfo::Template.UVP") }} ${ itemData.prices.rrp.price.formatted }
                             </span>
                         </div>
                         <div class="price">
