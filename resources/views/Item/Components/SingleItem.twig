@@ -15,7 +15,7 @@
                 </div>
 
                 <!-- ITEM DETAIL -->
-                <div class="col-md-6 single-rightside">
+                <div class="col-md-6 single-rightside" v-stick-in-parent>
                 <h1>${ currentVariation | itemName }</h1>
                 {% if ('item.shortDescription' in itemData or 'all' in itemData)%}
                   <hr>
@@ -31,13 +31,17 @@
                 <p v-if="currentVariation.variation.availability" class="availability">
                   <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemAvailability") }}: </span>${ currentVariation.variation.availability.names.name }
                 </p>
-                <p class="downloads">
-                        <span class="tabStop">{{ trans("Ceres::Template.singleItemDownloads") }}: </span><span class="downloadHere">Download</span>
+                <p class="articleContent" v-if="currentVariation.unit">
+                        <span class="tabStop">{{ trans("Ceres::Template.singleItemContent") }}</span><span>${ currentVariation.unit.content | numberFormat }</span>
+                        <span>${ currentVariation.unit.names.name }</span>
                 </p>
-                <hr>
+                <p class="downloads">
+                        <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span class="downloadHere">Download</span>
+                </p>
 
                 <!-- Variation -->
                 <div class="row m-b-1" v-if="variations.length > 0">
+                <hr>
                     <variation-select template="#vue-variation-select" :attributes="attributeNameMap" :variations="variations" :preselect="currentVariation.variation.id" @is-valid-change="isVariationSelected = $event"></variation-select>
                 </div>
                 <!-- /Variation -->
@@ -67,16 +71,10 @@
                         <span ref="variationTotalPrice" :content="currentVariation.prices.default.price.value">
                             ${ variationTotalPrice | currency(currentVariation.prices.default.currency) }
                         </span>
-                        <sup>*</sup>
                         <span :content="currentVariation.prices.default.currency"></span>
                     </span>
 
                     <div class="base-price text-muted" v-if="currentVariation.unit">
-                        <div>
-                            {{ trans("Ceres::Template.singleItemContent") }}
-                            <span>${ currentVariation.unit.content | numberFormat }</span>
-                            <span>${ currentVariation.unit.names.name }</span>
-                        </div>
                         <div v-if="currentVariation.variation.mayShowUnitPrice">
                             {{ trans("Ceres::Template.singleItemUnitPrice") }}
                             <span class="base-price-value">
@@ -85,13 +83,13 @@
                         </div>
                     </div>
                     <span class="vat">
-                        * {% if services.customer.showNetPrices() %}{{ trans("Ceres::Template.singleItemExclVAT") }}{% else %}{{ trans("Ceres::Template.singleItemInclVAT") }}{% endif %} {{ trans("Ceres::Template.singleItemExclusive") }}
+                        {% if services.customer.showNetPrices() %}{{ trans("Ceres::Template.singleItemExclVAT") }}{% else %}{{ trans("Ceres::Template.singleItemInclVAT") }}{% endif %} {{ trans("Ceres::Template.singleItemExclusive") }}
                         <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts"{% endif %} title="{{ trans("Ceres::Template.singleItemShippingCosts") }}">{{ trans("Ceres::Template.singleItemShippingCosts") }}</a>
                     </span>
 
                     <slot name="AfterPrice"></slot>
 
-                    <div class="row m-y-1">
+                    <div class="row">
                         <slot name="BeforeAddToBasket"></slot>
                         <add-to-basket
                                 template="#vue-add-to-basket"
@@ -102,7 +100,7 @@
                                 :is-variation-selected="isVariationSelected"></add-to-basket>
                         <slot name="AfterAddToBasket"></slot>
                     </div>
-                    <br>
+                    <hr>
                     {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
                         <div class="row">
                             <add-to-wish-list :variation-id="currentVariation.variation.id"></add-to-wish-list>
@@ -118,12 +116,9 @@
                     <slot name="AdditionalContentAfterVAT"></slot>
 
                 </div>
-                </div>
-
-                <div class="row">
 
                 <!-- ITEM DESCRIPTION -->
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-sm-6">
                     <ul class="nav nav-tabs" role="tablist">
                         {% if 'item.description' in itemData or 'all' in itemData %}
                             <li class="nav-item" v-if="isDescriptionTabActive">
