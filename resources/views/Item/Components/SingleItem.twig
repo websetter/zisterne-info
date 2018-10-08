@@ -61,9 +61,9 @@
 
                     {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
                         <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.price.value > 0 && currentVariation.prices.rrp.price.value > currentVariation.prices.default.price.value">
-                            <del class="text-muted small">
-                                ${ currentVariation.prices.rrp.price.formatted }
-                            </del>
+                            <span class="text-muted small">
+                                {{ trans("ZisterneInfo::Template.UVP") }} ${ currentVariation.prices.rrp.price.formatted }
+                            </span>
                         </div>
                     {% endif %}
 
@@ -101,7 +101,7 @@
                     <hr>
 
                     {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
-                        <add-to-wish-list :variation-id="currentVariation.variation.id"></add-to-wish-list>                        
+                        <add-to-wish-list :variation-id="currentVariation.variation.id"></add-to-wish-list>
                     {% endif %}
 
                     <slot name="AdditionalContentAfterAddToBasket"></slot>
