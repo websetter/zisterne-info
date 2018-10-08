@@ -13,8 +13,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="stickyParent col-md-5">
-                <div class="single-rightside isSticky">
+                <div class="col-md-5 single-rightside">
                   <h1>${ currentVariation | itemName }</h1>
 
                   {% if ('item.shortDescription' in itemData or 'all' in itemData)%}
@@ -110,7 +109,6 @@
                     <slot name="AdditionalContentAfterAddToBasket"></slot>
                     <hr>
                     <slot name="AdditionalContentAfterVAT"></slot>
-                </div>
                 </div>
 
                 <!-- ITEM DESCRIPTION -->
