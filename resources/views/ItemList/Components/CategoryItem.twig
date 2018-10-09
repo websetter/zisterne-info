@@ -56,7 +56,7 @@
                 <hr>
                 <div class="artSold">
                   <p class="hidden">${ itemData | json_encode }</p>
-                  <p>${ itemData.variationProperties.values.value }</p>
+                  <p>${ itemData.variationProperties[0].values.value }</p>
                 </div>
                 <hr>
         </div>
