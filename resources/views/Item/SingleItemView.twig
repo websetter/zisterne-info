@@ -23,7 +23,7 @@
     <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
     <div slot="Eigenschaft">
       {%  for variationProperty in item.documents[0].data.variationProperties %}
-      	 {% if variationProperty .property.id == 1 %}
+      	 {% if variationProperty.property.id == 1 %}
                     <!-- {{ variationProperty.property.names.name }}-->
       	   <p>Bereits {{ variationProperty.values.value }} Mal verkauft.</p>
       	{% endif %}
