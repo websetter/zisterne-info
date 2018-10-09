@@ -56,9 +56,10 @@
                 <hr>
                 <div class="artSold" v-if="itemData.variationProperties">
                   <p class="hidden">${ itemData | json_encode }</p>
-                  <p>test</p>
+                    <p>Bereits ${ itemData.variationProperties[0].values.value } Mal verkauft</p>
+                      <hr>
                 </div>
-                <hr>
+
         </div>
     </article>
 </script>
