@@ -55,7 +55,13 @@
               </div>
                 <hr>
                 <div class="artSold">
-                  <p>${ itemData.variationProperties | json_encode() }</p>
+                  <p class="hidden">${ itemData.variationProperties | json_encode() }</p>
+                  <p v-for"variationProperty in itemData.variationProperties">
+                     <span v-if="variationProperty.property.id == 1">
+                       <p>Bereits ${ variationProperty.values.value } Mal verkauft.</p>
+                       <hr>
+                    </span>
+                  </p>
                 </div>
                 <hr>
         </div>
