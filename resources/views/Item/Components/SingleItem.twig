@@ -67,6 +67,7 @@
                         </div>
                     {% endif %}
 
+                    <p>{{ variationProperty.values.value }}</p>
                      <slot name="Eigenschaft"></slot>
                     <span class="price h1">
                         <span ref="variationTotalPrice" :content="currentVariation.prices.default.price.value">
