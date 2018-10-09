@@ -54,7 +54,7 @@
                 </div>
               </div>
                 <hr>
-                <div class="artSold">
+                <div class="artSold" v-if="itemData.variationProperties[0].values.value !== 0 ">
                   <p class="hidden">${ itemData | json_encode }</p>
                   <p>${ itemData.variationProperties[0].values.value }</p>
                 </div>
