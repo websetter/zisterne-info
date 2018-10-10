@@ -23,7 +23,7 @@
 
                   <hr>
                   <p class="producer" v-if="currentVariation.filter.hasManufacturer">
-                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemProducer") }}: </span>${ currentVariation.item.manufacturer.externalName }
+                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemProducer") }}: </span>${ currentVariation.item.manufacturer.logo }  ${ currentVariation.item.manufacturer.externalName }
                   </p>
                   <p class="articlenumber">
                     <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}: </span>${ currentVariation.variation.number }
@@ -32,7 +32,7 @@
                     <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemAvailability") }}: </span>${ currentVariation.variation.availability.names.name }
                   </p>
                   <p class="articleContent" v-if="currentVariation.unit">
-                    <span class="tabStop">{{ trans("Ceres::Template.singleItemContent") }}</span><span>${ currentVariation.unit.content | numberFormat }</span>
+                    <span class="tabStop">{{ trans("Ceres::Template.singleItemContent") }}:</span><span>${ currentVariation.unit.content | numberFormat }</span>
                     <span>${ currentVariation.unit.names.name }</span>
                   </p>
                   <p class="downloads">
