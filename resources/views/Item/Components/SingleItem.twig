@@ -26,17 +26,16 @@
                     <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemProducer") }}: </span><span class="producerName"><img :src="currentVariation.item.manufacturer.logo" :alt="currentVariation.item.manufacturer.externalName"><br>  ${ currentVariation.item.manufacturer.externalName }</span>
                   </p>
                   <p class="articlenumber">
-                    <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}: </span>${ currentVariation.variation.number }
+                    <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}: </span><span class="tabStop2">${ currentVariation.variation.number }</span>
                   </p>
                   <p v-if="currentVariation.variation.availability" class="availability">
-                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemAvailability") }}: </span>${ currentVariation.variation.availability.names.name }
+                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemAvailability") }}: </span><span class="tabStop2">${ currentVariation.variation.availability.names.name }</span>
                   </p>
                   <p class="articleContent" v-if="currentVariation.unit">
-                    <span class="tabStop">{{ trans("Ceres::Template.singleItemContent") }}:</span><span>${ currentVariation.unit.content | numberFormat }</span>
-                    <span>${ currentVariation.unit.names.name }</span>
+                    <span class="tabStop">{{ trans("Ceres::Template.singleItemContent") }}:</span><span class="tabStop2">${ currentVariation.unit.content | numberFormat } ${ currentVariation.unit.names.name }</span>
                   </p>
                   <p class="downloads">
-                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span class="downloadHere">Download</span>
+                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span class="downloadHere tabStop2">Download</span>
                   </p>
 
                   <!-- Variation -->
