@@ -24,7 +24,7 @@
 
                   <hr>
                   <p class="producer" v-if="currentVariation.filter.hasManufacturer">
-                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemProducer") }}: </span><span class="producerName"><img :src="currentVariation.item.manufacturer.logo" :alt="currentVariation.item.manufacturer.externalName"><br>  ${ currentVariation.item.manufacturer.externalName }</span>
+                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemProducer") }}: </span><span class="producerName"><img v-if="currentVariation.item.manufacturer.logo" :src="currentVariation.item.manufacturer.logo" :alt="currentVariation.item.manufacturer.externalName"><br>  ${ currentVariation.item.manufacturer.externalName }</span>
                   </p>
                   <p class="articlenumber">
                     <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}: </span><span class="tabStop2">${ currentVariation.variation.number }</span>
