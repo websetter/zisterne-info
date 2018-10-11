@@ -4,6 +4,7 @@
 
 <script type="x/template" id="vue-single-item">
     <div>
+    <main>
         <div class="single container-max page-content">
             <div class="row">
                 <div class="col-md-5 col-lg-7 single-leftside">
@@ -132,6 +133,9 @@
                             <a :class="{ 'active': !isDescriptionTabActive && !isTechnicalDataTabActive }" class="nav-link" data-toggle="tab" href="#assessments-details" role="tab">{{ trans("Ceres::Template.singleItemMoreDetails") }}</a>
                         </li>
 
+                        <li class="nav-item accessoryTab">
+                          <a class="nav-link" data-toggle="tab" :href="'#accessory-' +  currentVariation.variation.id" role="tab">Zubehör</a>
+                        </li>
                         <slot name="AddDetailTabs"></slot>
                     </ul>
 
@@ -245,15 +249,20 @@
                                 </table>
                             </div>
                         </div>
-
+                        <div class="tab-pane accessoryArt" :id="'accessory-' + currentVariation.variation.id" role="tabpanel">
+                            <slot name="CrossSellingAccessory"></slot>
+                            <div class="clear"></div>
+                        </div>
                         <slot name="AddDetailTabsContent"></slot>
                     </div>
                 </div>
             </div>
             <!-- ./ITEM DESCRIPTION -->
-
-            <slot name="ItemListContainer"></slot>
             <slot name="FeedbackContainer"></slot>
         </div>
+        </main>
+        <aside>
+          <slot name="ItemListContainer"></slot>
+        </aside>
     </div>
 </script>

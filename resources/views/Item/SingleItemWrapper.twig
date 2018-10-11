@@ -18,7 +18,5 @@
 {% endblock %}
 
 {% block PageBody %}
-  <main>
-    {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "ZisterneInfo::Item.SingleItemView"] %}
-  </main>
+    {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "ZisterneInfo::Item.SingleItemView"] %}  
 {% endblock %}
