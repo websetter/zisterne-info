@@ -145,6 +145,25 @@
             </div>
         </div>
         <!-- ./SHIPPINGCOSTS MODAL -->
+        <!-- HOTLINE MODAL -->
+        <div id="hotline-modal-wrapper">
+          {% if hotlineModalContent is not defined %}
+            {% set hotlineModalContent = services.category.get(1418, lang) %}
+          {% endif %}
+
+          <div class="modal fade hotline-modal" id="hotline" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <div class="modal-title h3">{{ hotlineModalContent.details.first.description | raw }}</div>
+                        </div>
+                        {{ hotlineModalContent.details.first.description2 | raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./HOTLINE MODAL -->
     </div>
 </div>
 
