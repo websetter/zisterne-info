@@ -10,10 +10,6 @@
 {{ component( "ZisterneInfo::Basket.Components.AddToBasket" ) }}
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 
-{% set lang = services.sessionStorage.getLang() %}
-
-{% set crossSellingItemsAccessory = services.item.CrossSellingItems(item.documents[0].data.item.id, "Accessory") %}
-
 <single-item v-cloak template="#vue-single-item" :item-data="{{ item | json_encode }}" :variation-list-data="{{ variations | json_encode }}" :attribute-name-map="{{attributeNameMap | json_encode}}">
     <div slot="BeforePrice">{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</div>
     <div slot="AfterPrice">{{ LayoutContainer.show("Ceres::SingleItem.AfterPrice", item.documents[0].data) }}</div>
@@ -34,32 +30,9 @@
       	{% endif %}
       {% endfor %}
       </div>
-      <div slot="crossSellingItemsAccessory">
-        <div class="row">
-            <div class="col-xs-12">
-
-                {% if crossSellingItemsAccessory | length > 0 %}
-
-                    {% set crossAccessoryItemIds = [] %}
-
-                    {% for crossAccessoryItem in crossSellingItemsAccessory %}
-                        {% if crossAccessoryItemIds | length < 16 %}
-                            {% set crossAccessoryItemIds = crossAccessoryItemIds|merge([crossAccessoryItem.crossItemId]) %}
-                        {% endif %}
-                    {% endfor %}
-
-                    {% set crossAccessoryItemDetails = services.itemLoader.loadForTemplate('ZisterneInfo::ItemList.ItemListView', itemLoaderPresets.items, {'itemIds':crossAccessoryItemIds}) %}
-                    <ul class="product-list row grid crossselling-list crossselling-accessory">
-                        {% for item in crossAccessoryItemDetails.documents %}
-                            <li class="col-xs-6 col-md-3">
-                                {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
-            </div>
-        </div><!-- ./Zubehör -->
-    </div>
-
+      <div slot="CrossSellingAccessory">
+         {{ component("ZisterneInfo::Containers.Components.ContainerItemList") }}
+         {{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", accessory) }}
+         <container-item-list :items="{{ accessory| json_encode }}"></container-item-list>
+     </div>
 </single-item>
