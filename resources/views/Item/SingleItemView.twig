@@ -35,7 +35,7 @@
       <p class="downloads" slot="Download">
         {%  for variationProperty in item.documents[0].data.variationProperties %}
            {% if variationProperty.property.id == 4 %}
-             <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span class="tabStop2 downloadDatei">{{ variationProperty.values.value }}</span>
+             <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span class="tabStop2 downloadDatei hidden">{{ variationProperty.values.value }}<ul class="data"></ul></span>
           {% endif %}
         {% endfor %}
       </p>
