@@ -262,7 +262,13 @@
         </div>
         </main>
         <aside>
-          <slot name="ItemListContainer"></slot>
+          <div class="container-max">
+            <div class="row">
+                <div class="col-xs-12">
+                  <slot name="ItemListContainer"></slot>
+                </div>
+            </div>
+          </div>
         </aside>
     </div>
 </script>
