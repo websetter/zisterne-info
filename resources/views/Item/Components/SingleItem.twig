@@ -36,7 +36,7 @@
                     <span class="tabStop">{{ trans("Ceres::Template.singleItemContent") }}:</span><span class="tabStop2">${ currentVariation.unit.content | numberFormat } ${ currentVariation.unit.names.name }</span>
                   </p>
                   <p class="downloads">
-                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span class="downloadHere tabStop2">Download</span>
+                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span>  <slot name="Download"></slot>
                   </p>
 
                   <!-- Variation -->
