@@ -34,7 +34,6 @@
         {%  for variationProperty in item.documents[0].data.variationProperties %}
            {% if variationProperty.property.id == 4 %}
              <a target="_blank" href="{{ variationProperty.values.value }}">Download Informationen</a>
-             <hr>
           {% endif %}
         {% endfor %}
         </div>
