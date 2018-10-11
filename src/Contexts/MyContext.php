@@ -1,5 +1,5 @@
 <?php
-namespace CeresHermko\Contexts;
+namespace ZisterneInfo\Contexts;
 
 use IO\Helper\ContextInterface;
 use Ceres\Contexts\SingleItemContext;
