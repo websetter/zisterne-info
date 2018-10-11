@@ -35,9 +35,7 @@
                   <p class="articleContent" v-if="currentVariation.unit">
                     <span class="tabStop">{{ trans("Ceres::Template.singleItemContent") }}:</span><span class="tabStop2">${ currentVariation.unit.content | numberFormat } ${ currentVariation.unit.names.name }</span>
                   </p>
-                  <p class="downloads">
-                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span>  <slot name="Download"></slot>
-                  </p>
+                  <slot name="Download"></slot>
 
                   <!-- Variation -->
                   <div class="variation" v-if="variations.length > 1">

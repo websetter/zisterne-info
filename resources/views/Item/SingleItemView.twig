@@ -30,13 +30,15 @@
       	{% endif %}
       {% endfor %}
       </div>
-      <div class="tabStop2" slot="Download">
+
+
+      <p class="downloads" slot="Download">
         {%  for variationProperty in item.documents[0].data.variationProperties %}
            {% if variationProperty.property.id == 4 %}
-             <a target="_blank" href="{{ variationProperty.values.value }}">Download Informationen</a>
+             <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span clas="tabStop2"><a target="_blank" href="{{ variationProperty.values.value }}">Download Informationen</a></span>
           {% endif %}
         {% endfor %}
-        </div>
+      </p>
       <div slot="CrossSellingAccessory">
          {{ component("ZisterneInfo::Containers.Components.ContainerItemList") }}
          {{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", accessory) }}
