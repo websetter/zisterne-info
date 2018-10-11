@@ -12,7 +12,7 @@
 
 {% set lang = services.sessionStorage.getLang() %}
 
-{% set crossSellingItemsAccessory = services.item.getItemCrossSellingList(item.documents[0].data.item.id, "Accessory") %}
+{% set crossSellingItemsAccessory = services.item.CrossSellingItems(item.documents[0].data.item.id, "Accessory") %}
 
 <single-item v-cloak template="#vue-single-item" :item-data="{{ item | json_encode }}" :variation-list-data="{{ variations | json_encode }}" :attribute-name-map="{{attributeNameMap | json_encode}}">
     <div slot="BeforePrice">{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</div>
