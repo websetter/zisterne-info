@@ -20,7 +20,7 @@
     {{ component( "Ceres::Basket.Components.BasketTotals" ) }}
     {{ component( "Ceres::Checkout.Components.Checkout" ) }}
 
-    <div class="page-content checkout container-max">
+    <div class="page-content checkout container-max test">
         {% set overrideCheckout = LayoutContainer.show("Ceres::Checkout") %}
         {% if overrideCheckout|trim is empty %}
             <div class="row m-t-1">
