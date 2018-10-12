@@ -1,100 +1,18 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% if footerContent is not defined %}
+  {% set footerContent = services.category.get(1421, lang) %}
+{% endif %}
 <footer>
   <div class="container-max footerTop">
     <hr>
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-3">
-          <p class="headline">FAQ</p>
-          <ul class="list-unstyled">
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-          </ul>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-          <p class="headline">Mediathek</p>
-          <ul class="list-unstyled">
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-          </ul>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-          <p class="headline">Social media</p>
-          <ul class="list-unstyled">
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-          </ul>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-          <p class="headline">Optionales Feld</p>
-          <ul class="list-unstyled">
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-            <li><a title="" href="">Lorem Ipsum</a></li>
-          </ul>
-      </div>
+      {{ footerContent.details.first.description | raw }}
     </div>
   </div>
   <div class="footerMiddle">
       <div class="container-max">
         <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-3">
-              <p class="headline">Einkaufen</p>
-              <ul class="list-unstyled">
-                <li><a title="zu den Versankosten" href="{{ trans("ZisterneInfo::Template.linkVersandarten") }}">Versandkosten</a></li>
-                <li><a title="zu den Zahlungsarten" href="{{ trans("ZisterneInfo::Template.linkZahlungsarten") }}">Zahlungsarten</a></li>
-                <li><a title="" href="{{ trans("ZisterneInfo::Template.linkWiderrufsrecht") }}">Widerrufsrecht</a></li>
-              </ul>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-              <p class="headline">Unternehmen</p>
-              <ul class="list-unstyled">
-                <li><a title="zur Datenschutzerklärung" href="{{ trans("ZisterneInfo::Template.linkDatenschutz") }}">Datenschutzerklärung</a></li>
-                <li><a title="zum Impressum" href="{{ trans("ZisterneInfo::Template.linkImpressum") }}">Impressum</a></li>
-                <li><a title="zu den AGB" href="{{ trans("ZisterneInfo::Template.linkAGB") }}">Zisterne.info - AGB</a></li>
-              </ul>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-              <p class="headline">Kontakt</p>
-              <p><a href="tel:07162 80 6 80 70" title="Rufen Sie uns an">07162 80 6 80 70</a><br><a href="mailto:mail@braun-gmbh.eu" title="Schreiben Sie uns">mail@braun-gmbh.eu</a></p>
-              <p>Telefonisch erreichbar:<br><span class="tabStop">Mo-Do:</span>07:30 - 12:30<br><span class="tabStop"></span>13:00 - 16:30<br><span class="tabStop">Fr:</span>07:30 - 12:30<br><span class="tabStop"></span>13:00 - 14:00</p>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 icons">
-              <p class="headline">Zahlungsarten</p>
-              <ul class="list-unstyled">
-                <li><a title="zu den Zahlungsarten" href="{{ trans("ZisterneInfo::Template.linkZahlungsarten") }}"><img src="https://www.zisternenfilter.com/images/gallery/zisterne-info/icons/zahlungsart-paypal.png" alt="PayPal"></a></li>
-                <li><a title="zu den Zahlungsarten" href="{{ trans("ZisterneInfo::Template.linkZahlungsarten") }}"><img src="https://www.zisternenfilter.com/images/gallery/zisterne-info/icons/zahlungsart-visa.png" alt="Visa"></a></li>
-                <li><a title="zu den Zahlungsarten" href="{{ trans("ZisterneInfo::Template.linkZahlungsarten") }}"><img src="https://www.zisternenfilter.com/images/gallery/zisterne-info/icons/zahlungsart-mastercard.png" alt="Mastercard"></a></li>
-                <li><a title="zu den Zahlungsarten" href="{{ trans("ZisterneInfo::Template.linkZahlungsarten") }}"><img src="https://www.zisternenfilter.com/images/gallery/zisterne-info/icons/zahlungsart-sepa.jpg" alt="Lastschrift"></a></li>
-              </ul>
-              <p class="headline">Versandarten</p>
-              <ul class="list-unstyled">
-                <li><a title="zu den Versandsarten" href="{{ trans("ZisterneInfo::Template.linkVersandarten") }}"><img src="https://www.zisternenfilter.com/images/gallery/zisterne-info/icons/zahlungsart-paypal.png" alt="PayPal"></a></li>
-                <li><a title="zu den Versandsarten" href="{{ trans("ZisterneInfo::Template.linkVersandarten") }}"><img src="https://www.zisternenfilter.com/images/gallery/zisterne-info/icons/zahlungsart-paypal.png" alt="PayPal"></a></li>
-              </ul>
-          </div>
+          {{ footerContent.details.first.description2 | raw }}
         </div>
       </div>
   </div>
