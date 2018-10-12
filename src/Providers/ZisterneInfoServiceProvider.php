@@ -122,7 +122,7 @@ class ZisterneInfoServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.checkout', function (TemplateContainer $container)
             {
-                $container->setTemplate('ZisterneInfo::Checkout.Checkout');
+                $container->setTemplate('ZisterneInfo::Checkout.CheckoutView');
                 return false;
             }, self::PRIORITY);
         }
