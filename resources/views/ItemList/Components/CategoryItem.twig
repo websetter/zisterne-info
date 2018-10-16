@@ -36,16 +36,15 @@
               <a :href="itemData | itemURL" class="thumb-title">
                   ${ itemData | itemName }
               </a>
-              <p class="shortDesc">${ itemData.texts.shortDescription }<span class="dots">...</p></p>
+              <p class="shortDesc">${ itemData.texts.shortDescription }</p>
               <div class="prices">
-                      <del v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0 && itemData.prices.rrp.price.value > itemData.prices.default.unitPrice.value" class="crossprice">
+                  <div v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0 && itemData.prices.rrp.price.value > itemData.prices.default.unitPrice.value" class="price-view-port">
+                      <span class="crossprice">
                           {{ trans("ZisterneInfo::Template.UVP") }} ${ itemData.prices.rrp.price.formatted }
-                      </del>
+                      </span>
+                  </div>
                   <div class="price">
                       ${ itemData.prices.default.unitPrice.formatted } *
-                  </div>
-                  <div class="artSold" v-if="itemData.variationProperties">
-                      <p>${ itemData.variationProperties[0].values.value } verkauft</p>
                   </div>
               </div>
                 <div class="category-unit-price" v-if="!(itemData.unit.unitOfMeasurement === 'C62' && itemData.unit.content === 1)">
@@ -54,7 +53,12 @@
                     <span v-if="itemData.variation.mayShowUnitPrice">| ${ itemData.prices.default.basePrice }</span>
                 </div>
               </div>
-            <hr>
+                <hr>
+                <div class="artSold" v-if="itemData.variationProperties">
+                    <p>Bereits ${ itemData.variationProperties[0].values.value } Mal verkauft</p>
+                    <hr>
+                </div>
+
         </div>
     </article>
 </script>
