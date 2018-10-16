@@ -100,12 +100,7 @@
 
                     <hr>
 
-                    {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
-                        <add-to-wish-list :variation-id="currentVariation.variation.id"></add-to-wish-list>
-                    {% endif %}
-
-                    <slot name="AdditionalContentAfterAddToBasket"></slot>
-                    <hr>
+                    <slot name="AdditionalContentAfterAddToBasket"></slot>                    
                     <slot name="AdditionalContentAfterVAT"></slot>
                 </div>
 
