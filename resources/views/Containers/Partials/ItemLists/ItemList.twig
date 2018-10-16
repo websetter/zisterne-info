@@ -1,6 +1,6 @@
 {{ component( "ZisterneInfo::Containers.Components.ContainerItemList" ) }}
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
-{{ component( "ZisterneInfo::Category.Item.Partials.CategoryListItem" ) }}
+{% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
 {% set listType = config("Ceres.item.lists." ~ itemListNo ~ ".list_type") %}
 {% set tagIds = config("Ceres.item.lists." ~ itemListNo ~ ".tag_ids") | split(",") %}
@@ -35,6 +35,6 @@
 
             {% include 'ZisterneInfo::Containers.Partials.ItemLists.ItemListHeader' with { itemListNo: itemListNo, listType: listType, isHome: isHome } %}
         </div>
-        <container-item-list :items="{{ itemList | json_encode }}"></container-item-list>
+        {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': item, 'shippingCat': shippingCat } %}
     {% endif %}
 </div>
