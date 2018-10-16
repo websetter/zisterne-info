@@ -33,11 +33,7 @@
                 {{ overrideSearchFilters }}
             {% endif %}
           </div>
-            <p class="asideHeadline">Sortierung</p>
-          <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
-      <items-per-page
-              template="#vue-items-per-page"
-              :pagination-values="{{ searchOptions.itemsPerPage | json_encode }}"></items-per-page>
+            
       </aside>
     {% endif %}
 
