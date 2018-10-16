@@ -1,6 +1,6 @@
 {{ component( "ZisterneInfo::Containers.Components.ContainerItemList" ) }}
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
-{{ component( "ZisterneInfo::ItemList.Components.CategoryItem" ) }}
+{{ component( "ZisterneInfo::Category.Item.Partials.CategoryListItem" ) }}
 
 {% set listType = config("Ceres.item.lists." ~ itemListNo ~ ".list_type") %}
 {% set tagIds = config("Ceres.item.lists." ~ itemListNo ~ ".tag_ids") | split(",") %}

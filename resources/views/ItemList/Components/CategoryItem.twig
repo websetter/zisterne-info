@@ -35,7 +35,7 @@
             <div class="thumb-content">
               <a :href="itemData | itemURL" class="thumb-title">
                   ${ itemData | itemName }
-              </a>
+              </a>            
               <p class="shortDesc">${ itemData.texts.shortDescription }</p>
               <div class="prices">
                   <div v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0 && itemData.prices.rrp.price.value > itemData.prices.default.unitPrice.value" class="price-view-port">
