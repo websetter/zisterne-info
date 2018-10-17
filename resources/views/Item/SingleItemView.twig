@@ -24,8 +24,7 @@
     <div slot="Eigenschaft">
       {%  for variationProperty in item.documents[0].data.variationProperties %}
       	 {% if variationProperty.property.id == 1 %}
-                    <!-- {{ variationProperty.property.names.name }}-->
-      	   <p>{{ variationProperty.values.value }} verkauft.</p>
+      	   <p>{{ variationProperty.values.value }} verkauft</p>
       	{% endif %}
       {% endfor %}
       </div>
@@ -33,22 +32,13 @@
       <div slot="Bulletpoints">
         <ul>
         {%  for variationProperty in item.documents[0].data.variationProperties %}
-           {% if variationProperty.property.id == 5 %}
+           {% if variationProperty.property.id >= 5 and variationProperty.property.id <= 8  %}
              <li>{{ variationProperty.values.value }}</li>
            {% endif %}
-           {% if variationProperty.property.id == 6 %}
-              <li>{{ variationProperty.values.value }}</li>
-           {% endif %}
-           {% if variationProperty.property.id == 7 %}
-              <li>{{ variationProperty.values.value }}</li>
-           {% endif %}
-           {% if variationProperty.property.id == 8 %}
-              <li>{{ variationProperty.values.value }}</li>
-          {% endif %}
         {% endfor %}
       </ul>
       <hr>
-      </div>
+    </div>
 
 
       <p class="downloads" slot="Download">
