@@ -25,16 +25,18 @@
             </div>
         </last-seen-item-list>
     {% elseif itemList is not empty %}
-        <div class="col-xs-12">
-            {% if not isHome %}
-                <hr>
-                {% if listType == "cross_selling" %}
-                  <h2>{{ trans("ZisterneInfo::Template.singleItemCrossSellingTitle") }}</h2>
-                {% endif %}
-            {% endif %}
+        {% if listType == "cross_selling" %}
+          <div class="col-xs-12">
+              {% if not isHome %}
+                  <hr>
+                  {% if listType == "cross_selling" %}
+                    <h2>{{ trans("ZisterneInfo::Template.singleItemCrossSellingTitle") }}</h2>
+                  {% endif %}
+              {% endif %}
 
-            {% include 'ZisterneInfo::Containers.Partials.ItemLists.ItemListHeader' with { itemListNo: itemListNo, listType: listType, isHome: isHome } %}
-        </div>
+              {% include 'ZisterneInfo::Containers.Partials.ItemLists.ItemListHeader' with { itemListNo: itemListNo, listType: listType, isHome: isHome } %}
+          </div>
+        {% endif %}
         <container-item-list :items="{{ itemList | json_encode }}"></container-item-list>
     {% endif %}
 </div>
