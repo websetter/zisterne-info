@@ -29,7 +29,7 @@
       {% endfor %}
       </div>
 
-      <div slot="Bulletpoints">
+      <div class="bulletpoints" slot="Bulletpoints">
         <ul>
         {%  for variationProperty in item.documents[0].data.variationProperties %}
            {% if variationProperty.property.id >= 5 and variationProperty.property.id <= 8  %}
