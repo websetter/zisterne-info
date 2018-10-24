@@ -10,6 +10,10 @@
   {% set HomeContent = services.category.get(1422, lang) %}
 {% endif %}
 
+{% if startseitenIntroAktion is not defined %}
+  {% set startseitenIntroAktion = services.category.get(1425, lang) %}
+{% endif %}
+
 {% if overrideHomepageContainer | trim is empty %}
 
     {% set lang = services.sessionStorage.getLang() %}
@@ -41,6 +45,11 @@
 
 
     <div class="home container-max">
+          {{ startseitenIntroAktion.details.first.description | raw }}
+          <div id="shopAktion">
+              {{ startseitenIntroAktion.details.first.description2 | raw }}
+          </div>
+
           {{ HomeContent.details.first.description | raw }}
       <div class="row">
         <div class="col-xs-12 col-lg-6 bigCategoryLeft">
