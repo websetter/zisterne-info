@@ -42,10 +42,10 @@
                           {{ trans("ZisterneInfo::Template.UVP") }} ${ itemData.prices.rrp.price.formatted }
                       </del>
                   <div class="price">
-                      ${ itemData.prices.default.unitPrice.formatted } *
+                      ${ itemData.prices.default.unitPrice.formatted }
                   </div>
                   <div class="artSold" v-if="itemData.variationProperties">
-                      <p>${ itemData.variationProperties[0].values.value } verkauft</p>
+                      <p>${ itemData.variationProperties[0].values.value } verkauft*</p>
                   </div>
               </div>
                 <div class="category-unit-price" v-if="!(itemData.unit.unitOfMeasurement === 'C62' && itemData.unit.content === 1)">
