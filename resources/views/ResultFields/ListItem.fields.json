@@ -41,5 +41,5 @@
     "unit.names.name",
     "unit.names.lang",
     "unit.unitOfMeasurement",
-    "variation.variationProperties.*"
+    "item.variationProperties"
 ]
