@@ -42,15 +42,16 @@
     {% endif %}
 
     <main class="{% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}col-sm-9 {% endif %}col-xs-12 categoriegrid page-content categoryItem cat-id-{{ category.id}}">
-      <div class="catIntro">
-          <div class="catPic">
-            <h1 class="category-title">{{ category.details[0].name }}</h1>
-            <h2 class="category-subtitle">{{ category.details[0].shortDescription | raw }}</h2>
+        <div class="catPic">
+            <div class="catIntro">
+              <h1 class="category-title">{{ category.details[0].name }}</h1>
+              <h2 class="category-subtitle">{{ category.details[0].shortDescription | raw }}</h2>
+            </div>
             <img src="/documents/{{category.details[0].image2Path}}" alt="">
           </div>
-              <div id="category-description-container" class="category-description">{{ category.details[0].description | raw }}</div>
+          <div id="category-description-container" class="category-description">{{ category.details[0].description | raw }}</div>
 
-        </div>
+
         <!-- TMP Muss Angepasste werden wenn SubCat exist-->
         <div class="subCat">
           <div class="row">
