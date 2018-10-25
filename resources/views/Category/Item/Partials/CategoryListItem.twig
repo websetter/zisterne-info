@@ -83,11 +83,13 @@
               <div class="price">
                   {{ item.data.prices.default.unitPrice.formatted }}
               </div>
-              {% if itemData.variationProperties != "" %}
+
               <div class="artSold" >
-                  <p>{{ itemData.variationProperties[0].values.value }} verkauft*</p>
+                  {% if itemData.variationProperties[0].values.value != "" %}
+                    <p>{{ itemData.variationProperties[0].values.value }} verkauft*</p>
+                  {% endif %}
               </div>
-               {% endif %}
+
           </div>
           {% if not (item.data.unit.unitOfMeasurement == 'C62' and item.data.unit.content == 1) %}
               <div class="category-unit-price">
