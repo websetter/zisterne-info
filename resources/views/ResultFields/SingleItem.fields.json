@@ -32,7 +32,7 @@
     "variation.releasedAt",
     "variation.mayShowUnitPrice",
     "variation.bundleType",
-    "variation.variationProperties.*",
+    "variation.variationProperties",
 
     "texts.*",
 
