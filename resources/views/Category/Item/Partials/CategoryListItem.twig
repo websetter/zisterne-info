@@ -84,10 +84,10 @@
                   {{ item.data.prices.default.unitPrice.formatted }}
               </div>
 
-              <div class="artSold" >
-                <p class="hidden">{{ itemData | json_encode() }}</p>
-                  {% if itemData.variationProperties[0].values.value != "" %}
-                    <p>{{ itemData.variationProperties[0].values.value }} verkauft*</p>
+              <div class="artSold">
+                <p class="hidden">{{ item | json_encode() }}</p>
+                  {% if item.data.variationProperties[0].values.value != "" %}
+                    <p>{{ item.data.variationProperties[0].values.value }} verkauft*</p>
                   {% endif %}
               </div>
 
