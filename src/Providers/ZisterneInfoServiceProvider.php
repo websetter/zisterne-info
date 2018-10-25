@@ -12,6 +12,7 @@ use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
 use ZisterneInfo\Contexts\MyContext;
+use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 
 
 /**
