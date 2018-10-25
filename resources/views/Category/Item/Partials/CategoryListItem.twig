@@ -27,12 +27,46 @@
 
                     <noscript>
                         <a href="{{ itemUrl }}">
-                            <img class="img-fluid" src="{{ image.urlMiddle }}">
+                          <img class="img-fluid" src="{{ image.urlMiddle }}" title="{{ ItemName.get(item.data | itemName, item.data.variation.bundleType) }}" alt="{{ ItemName.get(item.data | itemName, item.data.variation.bundleType) }}">
                         </a>
                     </noscript>
                 </div>
             </div>
         </div>
+        
+        <!-- STORE SPECIALS -->
+        {% if item.data.item.storeSpecial.id > 0 or item.data.variation.bundleType == "bundle" %}
+          {% set storeSpecial = item.data.item.storeSpecial.names.name %}
+            <div class="special-tags">
+                {% if  item.data.item.storeSpecial.id == 1 %}
+                    {% set storeSpecialColor = 'danger' %}
+                    {% set percent = 0 %}
+                    {% if item.data.prices.rrp is defined %}
+                        {% set percent = (1 - item.data.prices.default.unitPrice.value / item.data.prices.rrp.price.value ) * -100 %}
+                    {% endif %}
+                    {% if percent <= 0 %}
+                        {% set dezimalcount = ceresConfig.item.storeSpecial %}
+                        {% set percent = percent | number_format(dezimalcount, ',', '.') %}
+                        {% set storeSpecial = percent ~"%" %}
+                    {% endif %}
+                {% elseif  item.data.item.storeSpecial.id == 2 %}
+                    {% set storeSpecialColor = 'primary' %}
+                {% elseif  item.data.item.storeSpecial.id == 3 %}
+                    {% set storeSpecialColor = 'success' %}
+                {% endif %}
+                {% if item.data.variation.bundleType == "bundle" %}
+                    <span class="tag bg-info">
+                        {{ trans("Ceres::Template.itemBundle") }}
+                    </span>
+                {% else %}
+                    <span class="tag bg-{{ storeSpecialColor }}">
+                        {{ storeSpecial }}
+                    </span>
+                {% endif %}
+            </div>
+        {% endif %}
+        <!-- ./STORE SPECIALS -->
+
         <hr>
         <div class="thumb-content">
           <a href="{{ itemUrl }}" class="thumb-title">
@@ -53,7 +87,7 @@
               <div class="artSold" >
                   <p>{{ itemData.variationProperties[0].values.value }} verkauft*</p>
               </div>
-               {% endif %}             
+               {% endif %}
           </div>
           {% if not (item.data.unit.unitOfMeasurement == 'C62' and item.data.unit.content == 1) %}
               <div class="category-unit-price">
