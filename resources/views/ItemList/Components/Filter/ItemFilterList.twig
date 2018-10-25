@@ -1,1 +1,16 @@
-<!-- Insert markup for item filter list here -->
+<script type="x/template" id="vue-item-filter-list">
+    <div class="filter-wrapper" v-show="facets && facets.length > 0">
+        {{ component( "ZisterneInfo::ItemList.Components.Filter.ItemFilter") }}
+        {{ component( "Ceres::ItemList.Components.Filter.ItemFilterPrice") }}
+
+
+        <div id="filterCollapse">
+              <ul class="card-columns">
+                  <item-filter v-for="facet in facets" :facet="facet" :key="facet.id"></item-filter>
+              </ul>
+              <button type="button" class="btn btn-primary btn-medium" data-toggle="collapse" href="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse" @click="toggleOpeningState()">
+                  <i class="fa fa-times" aria-hidden="true"></i> {{ trans("Ceres::Template.itemClose") }}
+              </button>
+        </div>
+    </div>
+</script>

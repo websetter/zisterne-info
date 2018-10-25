@@ -4,7 +4,7 @@
 
 {% block PageBody %}
 
-    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
+    {{ component( "ZisterneInfo::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
     {{ component( "ZisterneInfo::ItemList.Components.ItemList") }}
     {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
@@ -32,7 +32,7 @@
             {% else %}
                 {{ overrideSearchFilters }}
             {% endif %}
-          </div>            
+          </div>
           <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
       <items-per-page
               template="#vue-items-per-page"
