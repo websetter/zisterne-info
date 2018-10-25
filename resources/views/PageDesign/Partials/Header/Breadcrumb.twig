@@ -7,6 +7,9 @@
             <li class="breadcrumb-item">
                 <span>Sie sind hier:</span>
             </li>
+            <li class="breadcrumb-item">
+                <a title="zur Startseite" href="/"><span class="fa fa-home"></span></a>
+            </li>
 
             {% set break = false %}
             {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length - 1] if not break %}
