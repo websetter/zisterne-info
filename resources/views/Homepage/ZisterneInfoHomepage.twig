@@ -85,9 +85,7 @@
         <a href="/" title="/">Sale / Angebote</a>
       </div>
       <div id="ArtikelTest">
-          {% for item in items %}
-            <p>{{ item.id }}</p>
-          {% endfor %}
+            <p class="hidden">{{ items | json_encode }}</p>
       </div>
       <div id="introText">
           {% include category_template( 1422, lang, 13 ) ignore missing %}
