@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- STORE SPECIALS -->
         {% if item.data.item.storeSpecial.id > 0 or item.data.variation.bundleType == "bundle" %}
           {% set storeSpecial = item.data.item.storeSpecial.names.name %}
@@ -83,7 +83,7 @@
               <div class="price">
                   {{ item.data.prices.default.unitPrice.formatted }}
               </div>
-              {% if itemData.variationProperties is defined %}
+              {% if itemData.variationProperties != "" %}
               <div class="artSold" >
                   <p>{{ itemData.variationProperties[0].values.value }} verkauft*</p>
               </div>
