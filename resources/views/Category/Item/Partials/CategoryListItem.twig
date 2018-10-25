@@ -85,6 +85,7 @@
               </div>
 
               <div class="artSold" >
+                <p class="hidden">{{ itemData | json_encode }}</p>
                   {% if itemData.variationProperties[0].values.value != "" %}
                     <p>{{ itemData.variationProperties[0].values.value }} verkauft*</p>
                   {% endif %}
