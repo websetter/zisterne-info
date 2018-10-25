@@ -38,17 +38,11 @@ class ZisterneInfoServiceProvider extends ServiceProvider
             return false;
         }, 0);
 
-        $dispatcher->listen( 'IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) {
-        $templateContainer->setTemplates([
-            ResultFieldTemplate::TEMPLATE_LIST_ITEM   => 'ZisterneInfo::ResultFields.ListItem'
-          ]);
+        $dispatcher->listen('IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) {
+            $templateContainer->setTemplates([ ResultFieldTemplate::TEMPLATE_LIST_ITEM => 'ZisterneInfo::ResultFields.ListItem' ]);
         }, 0);
 
-        $dispatcher->listen( 'IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) {
-        $templateContainer->setTemplates([
-            ResultFieldTemplate::TEMPLATE_SINGLE_ITEM   => 'ZisterneInfo::ResultFields.SingleItem'
-          ]);
-        }, 0);
+
 
         // Override partials
         $dispatcher->listen('IO.init.templates', function (Partial $partial) use ($enabledOverrides)
