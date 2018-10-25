@@ -23,7 +23,7 @@
                   {% endif %}
 
                   <hr>
-                  <p class="rating">
+                  <p v-if="counts.ratingsCountTotal > 0" class="rating">
                   <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemRating") }}: </span><span class="tabStop2"><slot name="BeforePrice"></slot></span>
                   </p>
                   <p class="articlenumber">
