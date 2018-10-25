@@ -10,25 +10,27 @@
                 <div class="col-md-5 col-lg-7 single-leftside">
                     <div class="row">
                         <div class="col-xs-12">
-                            <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
+                            <slot name="ImageCarousel"></slot>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-7 col-lg-5 single-rightside" v-stick-in-parent>
                   <h1>${ currentVariation | itemName }</h1>
-                  <slot name="BeforePrice"></slot>
+
                   {% if ('item.shortDescription' in itemData or 'all' in itemData)%}
                     <hr>
                     <p class="single-description" v-if="currentVariation.texts.shortDescription !== ''" v-html="currentVariation.texts.shortDescription"></p>
                   {% endif %}
 
                   <hr>
-
+                  <p class="rating">
+                  <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemRating") }}: </span><span class="tabStop2"><slot name="BeforePrice"></slot></span>
+                  </p>
                   <p class="articlenumber">
                     <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}: </span><span class="tabStop2">${ currentVariation.variation.number }</span>
                   </p>
                   <p v-if="currentVariation.variation.availability" class="availability">
-                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemAvailability") }}: </span><span class="tabStop2">${ currentVariation.variation.availability.names.name }</span>
+                    <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemAvailability") }}: </span><span class="tabStop2"> <slot name="Lieferzeit"></slot></span>
                   </p>
                   <slot name="Download"></slot>
 
@@ -70,16 +72,17 @@
                         <div class="sold">
                           <slot name="Eigenschaft"></slot>
                         </div>
-                    </div>
-
-                    <div class="base-price text-muted" v-if="currentVariation.unit">
-                        <div v-if="currentVariation.variation.mayShowUnitPrice">
-                            {{ trans("Ceres::Template.singleItemUnitPrice") }}
-                            <span class="base-price-value">
-                                ${ variationGraduatedPrice.basePrice }
-                            </span>
+                        <div class="base-price text-muted" v-if="currentVariation.unit">
+                            <div v-if="currentVariation.variation.mayShowUnitPrice">
+                                {{ trans("Ceres::Template.singleItemUnitPrice") }}
+                                <span class="base-price-value">
+                                    ${ variationGraduatedPrice.basePrice }
+                                </span>
+                            </div>
                         </div>
                     </div>
+
+
                     <span class="vat">
                     {{ trans("ZisterneInfo::Template.singleItemVatTXT1") }} <span class="fa fa-arrow-right"></span>
                      <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts"{% endif %} title="{{ trans("ZisterneInfo::Template.singleItemVatTXT2") }}">{{ trans("ZisterneInfo::Template.singleItemVatTXT2") }}</a>

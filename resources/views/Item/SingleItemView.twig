@@ -39,6 +39,14 @@
       {% endfor %}
       </div>
 
+      <div slot="Lieferzeit">
+        {%  for variationProperty in item.documents[0].data.variationProperties %}
+        	 {% if variationProperty.property.id == 9 %}
+        	   <span>{{ variationProperty.values.value }}</span>
+        	{% endif %}
+        {% endfor %}
+        </div>
+
       <div class="bulletpoints" slot="Bulletpoints">
         <ul>
         {%  for variationProperty in item.documents[0].data.variationProperties %}
