@@ -38,28 +38,33 @@
           <a href="{{ itemUrl }}" class="thumb-title">
               {{ ItemName.get(item.data | itemName, item.data.variation.bundleType) }}
           </a>
-          {{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}         
+          {{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}
 
           <div class="prices">
-              {% if item.data.prices.rrp is defined and item.data.prices.rrp.price.value != 0 and item.data.prices.rrp.price.value > item.data.prices.default.unitPrice.value %}
-                  <del class="crossprice">
-                     {{ trans("ZisterneInfo::Template.UVP") }} {{ item.data.prices.rrp.price.formatted }}
-                  </del>
-              {% endif %}
+                <del class="crossprice">
+                  {% if item.data.prices.rrp is defined and item.data.prices.rrp.price.value != 0 and item.data.prices.rrp.price.value > item.data.prices.default.unitPrice.value %}
+                    {{ trans("ZisterneInfo::Template.UVP") }} {{ item.data.prices.rrp.price.formatted }}
+                   {% endif %}
+                </del>
               <div class="price">
                   {{ item.data.prices.default.unitPrice.formatted }}
               </div>
-              {% if not (item.data.unit.unitOfMeasurement == 'C62' and item.data.unit.content == 1) %}
-                  <div class="category-unit-price">
-                      <span>{{ item.data.unit.content }}</span>
-                      <span>{{ item.data.unit.names.name }}</span>
-
-                      {% if item.data.variation.mayShowUnitPrice %}
-                          | {{ item.data.prices.default.basePrice }}
-                      {% endif %}
-                  </div>
-              {% endif %}
+              {% if itemData.variationProperties is defined %}
+              <div class="artSold" >
+                  <p>{{ itemData.variationProperties[0].values.value }} verkauft*</p>
+              </div>
+               {% endif %}             
           </div>
+          {% if not (item.data.unit.unitOfMeasurement == 'C62' and item.data.unit.content == 1) %}
+              <div class="category-unit-price">
+                  <span>{{ item.data.unit.content }}</span>
+                  <span>{{ item.data.unit.names.name }}</span>
+
+                  {% if item.data.variation.mayShowUnitPrice %}
+                      | {{ item.data.prices.default.basePrice }}
+                  {% endif %}
+              </div>
+          {% endif %}
           {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}
         </div>
         <hr>

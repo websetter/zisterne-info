@@ -38,8 +38,9 @@
               </a>
               <p class="shortDesc">${ itemData.texts.shortDescription }</p>
               <div class="prices">
-                      <del v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0 && itemData.prices.rrp.price.value > itemData.prices.default.unitPrice.value" class="crossprice">
-                          {{ trans("ZisterneInfo::Template.UVP") }} ${ itemData.prices.rrp.price.formatted }
+                      <del class="crossprice">
+                        <span v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0 && itemData.prices.rrp.price.value > itemData.prices.default.unitPrice.value">
+                          {{ trans("ZisterneInfo::Template.UVP") }} ${ itemData.prices.rrp.price.formatted }</span>
                       </del>
                   <div class="price">
                       ${ itemData.prices.default.unitPrice.formatted }
