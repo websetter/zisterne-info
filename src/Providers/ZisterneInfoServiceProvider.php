@@ -14,7 +14,6 @@ use Plenty\Plugin\ConfigRepository;
 use ZisterneInfo\Contexts\MyContext;
 use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 
-
 /**
  * Class ZisterneInfoServiceProvider
  * @package ZisterneInfo\Providers
