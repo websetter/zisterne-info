@@ -86,7 +86,7 @@
               </div>
 
               <div class="artSold">
-                {%  for variationProperty in item.documents[0].data.variationProperties %}
+                {%  for variationProperty in item.data.variationProperties %}
                    {% if variationProperty.property.id == 1 %}
                      <span>{{ variationProperty.values.value }} verkauft*</span>
                   {% endif %}
