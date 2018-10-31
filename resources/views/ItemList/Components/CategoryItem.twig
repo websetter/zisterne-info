@@ -55,7 +55,9 @@
                   <div class="price">
                       ${ itemData.prices.default.unitPrice.formatted }
                   </div>
-                  
+                   <div class="artSold" v-if="itemData.variationProperties[0].property.id === 1">
+                      <p>${ itemData.variationProperties[0].values.value } verkauft*</p>
+                  </div>
               </div>
                 <div class="category-unit-price" v-if="!(itemData.unit.unitOfMeasurement === 'C62' && itemData.unit.content === 1)">
                     <span>${ itemData.unit.content }</span>
