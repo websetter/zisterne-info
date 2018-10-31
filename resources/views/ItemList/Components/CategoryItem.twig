@@ -46,7 +46,6 @@
               <a :href="itemData | itemURL" class="thumb-title">
                   ${ itemData | itemName }
               </a>
-              <p class="shortDesc">${ itemData.texts.shortDescription }</p>
               <div class="prices">
                       <del class="crossprice">
                         <span v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0 && itemData.prices.rrp.price.value > itemData.prices.default.unitPrice.value">
