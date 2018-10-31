@@ -81,11 +81,21 @@
           {% endif %}
         </div>
       </div>
+      <div id="test">
+        {% for curCat in categories %}
+          {% set allItems = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView',itemLoaderPresets.categoryList,{'categoryId': curCat.id, 'sorting': itemSort}) %}
+          {% set allItemsList = allItems.documents %}
+          <ul>
+            {% for allItem in allItemsList %}
+                <li class="col-xs-1">
+                    {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': allItem } %}
+                </li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
       <div id="sale">
         <a href="/" title="/">Sale / Angebote</a>
-      </div>
-      <div id="ArtikelTest">
-            <p class="hidden">{{ items | json_encode }}</p>
       </div>
       <div id="introText">
           {% include category_template( 1422, lang, 13 ) ignore missing %}
