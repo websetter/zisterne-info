@@ -86,12 +86,11 @@
           {% set itemList = services.itemList.getItemList( 'category', curCat.id, null, 100 ).documents %}
           <ul>
             {% for item in itemList %}
-              {# if item.id == 1320 #}
-                <li class="col-xs-1">
-                  <span>{{ item.id }}</span>
-                    {# include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': item } #}
+              {% if item.id == 1320 %}
+                <li class="col-xs-3">
+                    {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
                 </li>
-                {# endif #}
+                {% endif %}
             {% endfor %}
           </ul>
         {% endfor %}
