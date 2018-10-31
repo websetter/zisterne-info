@@ -55,7 +55,7 @@
                   <div class="price">
                       ${ itemData.prices.default.unitPrice.formatted }
                   </div>
-                   <div class="artSold" v-if="itemData.variationProperties">
+                   <div class="artSold" v-if="itemData.variationProperties[0]">
                       <p>${ itemData.variationProperties[0].values.value } verkauft*</p>
                   </div>
               </div>
