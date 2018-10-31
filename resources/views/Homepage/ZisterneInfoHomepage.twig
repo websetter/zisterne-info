@@ -86,9 +86,9 @@
           {% set allItems = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView',itemLoaderPresets.categoryList,{'categoryId': curCat.id, 'sorting': itemSort}) %}
           {% set allItemsList = allItems.documents %}
           <ul>
-            {% for allItem in allItemsList %}
+            {% for item in itemList %}
                 <li class="col-xs-1">
-                    {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': allItem } %}
+                    {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
                 </li>
             {% endfor %}
           </ul>
