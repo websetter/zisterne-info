@@ -83,8 +83,7 @@
       </div>
       <div id="test">
         {% for curCat in categories %}
-          {% set allItems = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView',itemLoaderPresets.categoryList,{'categoryId': curCat.id, 'sorting': itemSort}) %}
-          {% set allItemsList = allItems.documents %}
+          {% set itemList = services.itemList.getItemList( 'category', curCat.id ).documents %}          
           <ul>
             {% for item in itemList %}
                 <li class="col-xs-1">
