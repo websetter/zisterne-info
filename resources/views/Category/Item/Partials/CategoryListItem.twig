@@ -88,7 +88,7 @@
               <div class="artSold">
                 {%  for variationProperty in item.data.variationProperties %}
                    {% if variationProperty.property.id == 1 %}
-                     <span>{{ variationProperty.values.value }} verkauft*</span>
+                     <p>{{ variationProperty.values.value }} verkauft*</p>
                   {% endif %}
                 {% endfor %}
               </div>
