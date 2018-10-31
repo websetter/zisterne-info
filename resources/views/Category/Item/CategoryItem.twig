@@ -69,7 +69,7 @@
 
             <ul class="product-list row grid" v-is-loading-watcher="$store.state.itemList.isLoading">
                 {% for item in itemList %}
-                    <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <li class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                         {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': item, 'shippingCat': shippingCat } %}
                     </li>
                 {% endfor %}
