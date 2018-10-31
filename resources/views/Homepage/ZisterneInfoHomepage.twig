@@ -82,9 +82,9 @@
 
           <!-- -->
           <div class="row">
+            {% set count = 1 %}
             {% for curCat in categories %}
-              {% set itemList = services.itemList.getItemList( 'category', curCat.id, null, 100 ).documents %}
-              {% set count = 1 %}
+              {% set itemList = services.itemList.getItemList( 'category', curCat.id, null, 100 ).documents %}              
                 {% for item in itemList %}
                   {% if  item.data.item.storeSpecial.id == 3 and count <= 4 %}
                     <div class="col-xs-12 col-sm-6 col-md-3">
