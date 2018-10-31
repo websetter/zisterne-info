@@ -82,12 +82,10 @@
 
           <!-- -->
           <div class="row">
-            {% set startArt = services.category_template( 1425, lang, 13 ) %}
-            <p>{{ startArt }}</p>
             {% for curCat in categories %}
               {% set itemList = services.itemList.getItemList( 'category', curCat.id, null, 100 ).documents %}
                 {% for item in itemList %}
-                  {% if item.id == 1320 %}
+                  {% if  item.data.item.storeSpecial.id == 3 %}
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         {% include "ZisterneInfo::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
                     </div>
