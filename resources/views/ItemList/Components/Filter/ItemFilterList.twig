@@ -4,7 +4,7 @@
         {{ component( "Ceres::ItemList.Components.Filter.ItemFilterPrice") }}
 
 
-        <div id="filterCollapse">
+        <div class="collapse" :class="{in: isActive}" id="filterCollapse">
               <ul class="card-columns">
                   <item-filter v-for="facet in facets" :facet="facet" :key="facet.id"></item-filter>
               </ul>
