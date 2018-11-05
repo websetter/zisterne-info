@@ -3,6 +3,9 @@
         {{ component( "ZisterneInfo::ItemList.Components.Filter.ItemFilter") }}
         {{ component( "Ceres::ItemList.Components.Filter.ItemFilterPrice") }}
 
+        <a class="btn btn-link filter-toggle hidden-md-up" data-toggle="collapse" href="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse" @click="toggleOpeningState()">
+           <i class="fa fa-sliders default-float" aria-hidden="true"></i> {{ trans("Ceres::Template.itemFilter") }}
+       </a>
 
         <div class="collapse" :class="{in: isActive}" id="filterCollapse">
               <ul class="card-columns">
