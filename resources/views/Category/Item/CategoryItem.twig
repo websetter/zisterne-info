@@ -62,12 +62,8 @@
         </div>
         <!-- ENDE TMP -->
         <div class="filterPanelMobile hidden-md-up">
-            <p class="asideHeadline">Produktfilter</p>            
-            {% if overrideSearchFilters | trim is empty %}
-                <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
-            {% else %}
-                {{ overrideSearchFilters }}
-            {% endif %}
+            <p class="asideHeadline">Produktfilter</p>
+              <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
           </div>
         <div id="twig-rendered-item-list" class="item-list-frame{% if ceresConfig.item.loadingAnimationType == "blur" %} blur-effect{% endif %}">
             {% if ceresConfig.item.loadingAnimationType != "blur" %}
