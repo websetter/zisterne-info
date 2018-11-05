@@ -2,7 +2,7 @@
 {% set homepageURL = services.url.getHomepageURL() %}
 
 {% if categoryBreadcrumbs is not empty %}
-    <nav data-component="breadcrumbs" data-renderer="twig" class="container-max small hidden-sm-down">
+    <nav data-component="breadcrumbs" data-renderer="twig" class="container-max small">
         <ul class="breadcrumb">
             <li class="breadcrumb-item">
                 <span>Sie sind hier:</span>
@@ -32,6 +32,4 @@
             {% endif %}
         </ul>
     </nav>
-
-    <category-breadcrumbs template="#vue-category-breadcrumbs"></category-breadcrumbs>
 {% endif %}
