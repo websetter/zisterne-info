@@ -11,8 +11,8 @@
               <ul class="card-columns">
                   <item-filter v-for="facet in facets" :facet="facet" :key="facet.id"></item-filter>
               </ul>
-              <button type="button" class="btn btn-primary btn-medium" data-toggle="collapse" href="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse" @click="toggleOpeningState()">
-                  <i class="fa fa-times" aria-hidden="true"></i> {{ trans("Ceres::Template.itemClose") }}
+              <button type="button" class="btn btn-primary btn-medium"  @click="removeTag()">
+                  <i class="fa fa-times" aria-hidden="true"></i> Zurücksetzen
               </button>
         </div>
     </div>
