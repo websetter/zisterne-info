@@ -9,7 +9,7 @@
 
         <div class="collapse" :class="{in: isActive}" id="filterCollapse">
               <ul class="card-columns">
-                  <item-filter v-for="facet in facets" :facet="facet" :key="facet.id"></item-filter>
+                  <item-filter v-for="facet in facets" v-if="!(facet.id == 'feedback')" :facet="facet" :key="facet.id"></item-filter>
               </ul>
               <button type="button" class="btn btn-primary btn-medium"  @click="removeTag()">
                   <i class="fa fa-times" aria-hidden="true"></i> Zurücksetzen
