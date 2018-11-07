@@ -6,7 +6,7 @@
     {{ component( "ZisterneInfo::ItemList.Components.CategoryItem" ) }}
     {{ component( "Ceres::ItemList.Components.ItemListSorting" ) }}
     {{ component( "Ceres::ItemList.Components.Pagination" ) }}
-    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
+    {{ component( "ZisterneInfo::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
 
 <div class="page-content container {% if isSearch %} searchPage{% endif %}">
@@ -26,6 +26,7 @@
                 {{ overrideSearchFilters }}
             {% endif %}
           </div>
+          <p class="asideHeadline">Sortierung</p>
           <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
       <items-per-page
               template="#vue-items-per-page"
