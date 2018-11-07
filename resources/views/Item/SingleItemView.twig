@@ -34,7 +34,7 @@
     <div slot="Eigenschaft">
       {%  for variationProperty in item.documents[0].data.variationProperties %}
       	 {% if variationProperty.property.id == 1 %}
-      	   <p>{{ variationProperty.values.value }} verkauft</p>
+      	   <p>{{ variationProperty.values.value }} verkauft*</p>
       	{% endif %}
       {% endfor %}
       </div>
