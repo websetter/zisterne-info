@@ -15,7 +15,7 @@
                     <div class="autocomplete-image-container">
                         <img class="autocomplete-image" :src="item.img">
                     </div>
-                    <div class="autocomplete-item-name" v-html="item.displayName"></div>
+                    <a :href="item.url" class="autocomplete-item-name" v-html="item.displayName"></a>
                 </div>
             </div>
         </div>
