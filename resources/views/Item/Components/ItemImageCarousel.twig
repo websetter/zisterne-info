@@ -11,8 +11,8 @@
         </div>
       </div>
       <div class="col-xs-12">
-        <div id="thumbs">
-          <img :alt="getAltText(imagePreview)" :title="getItemName()" @click="goTo(index)" class="thumb" v-bind:class="{ 'active': currentItem === index }" :src="imagePreview.url" v-for="(imagePreview, index) in carouselImages">
+        <div id="thumbs" class="owl-thumbs owl-carousel owl-theme owl-single-item" ref="thumbs">
+          <img :alt="getAltText(imagePreview)" :title="getItemName()" @click="goTo(index)" class="owl-thumb" v-bind:class="{ 'active': currentItem === index }" :src="imagePreview.url" v-for="(imagePreview, index) in carouselImages">
         </div>
       </div>
     </div>
