@@ -95,15 +95,14 @@
                     <slot name="AfterPrice"></slot>
                     <slot name="BeforeAddToBasket"></slot>
                     {{ AddToBasket.printVueComponent(
-                          "currentVariation",
-                          false,
-                          true,
-                          {
-                              "v-if": "currentVariation.filter.isSalable",
-                              "missing-order-properties":"variationMissingProperties",
-                              "is-variation-selected": "isVariationSelected"
-                          }
-                      ) }}
+                            "currentVariation",
+                            false,
+                            true,
+                            {
+                                ":missing-order-properties":"variationMissingProperties",
+                                ":is-variation-selected": "isVariationSelected && currentVariation.filter.isSalable"
+                            }
+                        ) }}
                     <slot name="AfterAddToBasket"></slot>
 
 
