@@ -1,6 +1,7 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {# {{ component( "Ceres::Item.Components.ItemBundle" ) }} #}
+{{ component( "ZisterneInfo::ItemList.Components.ItemListpopUp" ) }}
 
 <script type="x/template" id="vue-add-item-to-basket-overlay">
 
@@ -69,7 +70,7 @@
                     <div class="modal-footer">
                         <div class="row">
                             <div class="item-confirm-special-case-close">
-                            <a @click="closeOverlay()" data-dismiss="modal" aria-label="Close" rel="nofollow" class="btn btn-primary btn-medium btn-m-r btn-outline-primary">
+                            <a @click="closeOverlay()" data-dismiss="modal" aria-label="Close" rel="nofollow" class="btn btn-primary btn-large btn-m-r btn-outline-primary">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 {{ trans("ZisterneInfo::Template.continueShopping") }}
                             </a>
