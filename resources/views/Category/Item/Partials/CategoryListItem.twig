@@ -92,22 +92,8 @@
                   {% endif %}
                 {% endfor %}
               </div>
-
-
-
-
-
           </div>
-          {% if not (item.data.unit.unitOfMeasurement == 'C62' and item.data.unit.content == 1) %}
-              <div class="category-unit-price">
-                  <span>{{ item.data.unit.content }}</span>
-                  <span>{{ item.data.unit.names.name }}</span>
 
-                  {% if item.data.variation.mayShowUnitPrice %}
-                      | {{ item.data.prices.default.basePrice }}
-                  {% endif %}
-              </div>
-          {% endif %}
           {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}
         </div>
         <hr>
