@@ -60,11 +60,7 @@
                       <p v-if="itemData.variationProperties[0].property.id == 1">${ itemData.variationProperties[0].values.value } verkauft*</p>
                   </div>
               </div>
-                <div class="category-unit-price" v-if="!(itemData.unit.unitOfMeasurement === 'C62' && itemData.unit.content === 1)">
-                    <span>${ itemData.unit.content }</span>
-                    <span>${ itemData.unit.names.name }</span>
-                    <span v-if="itemData.variation.mayShowUnitPrice">| ${ itemData.prices.default.basePrice }</span>
-                </div>
+
               </div>
                 <hr>
                 <div class="hidden btn-popup">
