@@ -1,10 +1,9 @@
 <script type="x/template" id="vue-item-search">
     <div class="search-box-inner">
         <div class="search-box-shadow-frame">
-            <input type="search" class="search-input" v-model="currentSearchString" @input="autocomplete($event.target.value)"
-                @keyup.enter="prepareSearch()" @keyup.down="keydown()" @keyup.up="keyup()"
-                @focus="isSearchFocused = true" @blur="setIsSearchFocused(false)"
-                >
+        <input type="search" class="search-input" ref="searchInput" @input="autocomplete($event.target.value)"
+          @keyup.enter="prepareSearch()" @keyup.down="keydown()" @keyup.up="keyup()"
+          @focus="isSearchFocused = true" @blur="setIsSearchFocused(false)">
 
             <button class="search-submit" type="submit" @click="search()">
                 <i class="fa fa-search sm-up"></i>
