@@ -90,7 +90,9 @@
                      <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts"{% endif %} title="{{ trans("ZisterneInfo::Template.singleItemVatTXT2") }}">{{ trans("ZisterneInfo::Template.singleItemVatTXT2") }}</a>
                  </span>
 
-
+                 <div v-if="currentVariation.stock.net == 0">
+                  <p>Artikel zur Zeit nicht lieferbar</p>
+                 </div>
 
                     <slot name="AfterPrice"></slot>
                     <slot name="BeforeAddToBasket"></slot>
