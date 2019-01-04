@@ -82,17 +82,11 @@
 
           <!-- -->
           <div class="row">
-            {% set count = 1 %}
-            {% for curCat in categories %}
-              {% set itemList = services.itemList.getItemList( 'category', curCat.id, null, 100 ).documents %}
-                {% for item in itemList %}
-                  {% if item.data.tags[0].id == 1 and count <= 4 %}
-                    <div class="col-xs-12 col-sm-6 startArt">
-                        {% include "ZisterneInfo::Category.Item.Partials.CategoryListStart" with { 'item': item } %}
-                    </div>
-                    {% set count = count + 1 %}
-                    {% endif %}
-                {% endfor %}
+            {% set list = services.itemList.getItemList( 'category', 1, null, 4) %}
+            {% for item in list %}
+                <div class="col-xs-12 col-sm-6 teyt">
+                    {% include "ZisterneInfo::Category.Item.Partials.CategoryListStart" with { 'item': item } %}
+                </div>
             {% endfor %}
 
           </div>
@@ -101,7 +95,7 @@
       <div id="sale">
         <a href="/" title="/">Sale / Angebote</a>
       </div>
-      
+
       <div id="introText">
           {% include category_template( 1422, lang, 13 ) ignore missing %}
       </div>
