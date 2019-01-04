@@ -101,12 +101,7 @@
       <div id="sale">
         <a href="/" title="/">Sale / Angebote</a>
       </div>
-      {% set list = services.itemList.getItemList( 'category', 1, null, 4) %}
-      {% for items in list %}
-          <div class="col-xs-12 col-sm-6 teyt">
-              {% include "ZisterneInfo::Category.Item.Partials.CategoryListStart" with { 'item': items } %}
-          </div>
-      {% endfor %}
+      
       <div id="introText">
           {% include category_template( 1422, lang, 13 ) ignore missing %}
       </div>
