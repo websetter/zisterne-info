@@ -82,13 +82,14 @@
 
           <!-- -->
           <div class="row">
-            {% set list = services.itemList.getItemList( 'category', 1, null, 4) %}
-            {% for item in list %}
+
+
+            {% set list = services.itemList.getItemList( 'tag_list', 1, null, 4).documents %}
+            {% for items in list %}
                 <div class="col-xs-12 col-sm-6 teyt">
-                    {% include "ZisterneInfo::Category.Item.Partials.CategoryListStart" with { 'item': item } %}
+                    {% include "ZisterneInfo::Category.Item.Partials.CategoryListStart" with { 'item': items } %}
                 </div>
             {% endfor %}
-
           </div>
         </div>
       </div>
