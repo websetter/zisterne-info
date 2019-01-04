@@ -5,7 +5,7 @@
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 <noscript>
   <p> {{ item | json_encode }}   </p>
-  <p> {{ item.documents.id }}   </p>
+  <p> {{ item.documents[0].id }}   </p>
 </noscript>
 <script type="x/template" id="vue-single-item">
     <div>
