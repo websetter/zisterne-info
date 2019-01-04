@@ -4,10 +4,7 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 <noscript>
-  <p>
-    <a href="{{ itemUrl }}">
-        {{ ItemName.get(item.data | itemName, item.data.variation.bundleType) }}
-    </a>
+  <p> {{ item.data | json_encode }} 
   </p>
 </noscript>
 <script type="x/template" id="vue-single-item">
