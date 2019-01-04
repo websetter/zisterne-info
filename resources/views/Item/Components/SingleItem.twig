@@ -4,8 +4,8 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 <noscript>
-  <p> {{ item.data | json_encode }} 
-  </p>
+  <p> {{ item.data.texts.name1 }}   </p>
+  <p> {{ currentVariation.texts.name1 }}   </p>
 </noscript>
 <script type="x/template" id="vue-single-item">
     <div>
