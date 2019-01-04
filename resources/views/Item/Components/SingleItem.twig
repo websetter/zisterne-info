@@ -4,8 +4,14 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 <noscript>
-  <p> {{ item | json_encode }}   </p>
-  <p> {{ item.documents[0].id }}   </p>
+  <h1> {{ item.documents[0].data.texts.name1 }}</h1>
+  <hr>
+  <p>{{ item.documents[0].data.texts.shortDescription }}</p>
+  <hr>
+  <p class="articlenumber">
+    <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}: </span><span class="tabStop2">{{ item.documents[0].data.variation.number }}</span>
+  </p>
+  <p>{{ item.documents[0].data.texts.description }}</p>
 </noscript>
 <script type="x/template" id="vue-single-item">
     <div>
