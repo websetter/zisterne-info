@@ -101,12 +101,12 @@
       <div id="sale">
         <a href="/" title="/">Sale / Angebote</a>
       </div>
-      {% set tagItems = services.itemList.getItemList("tag_list", [1], "texts.name1_asc", 4) %}
-      {% for item2 in tagItems %}
-          <div class="col-xs-12 col-sm-6 startArt">
-              {% include "ZisterneInfo::Category.Item.Partials.CategoryListStart" with { 'item': item2 } %}
+      {% set tagItems = services.itemList.getItemList( 'tag_list', 1, 'texts.name1_asc', 4) %}
+      {% for item in tagItems %}
+          <div class="col-xs-12 col-sm-6 teyt">
+              {% include "ZisterneInfo::Category.Item.Partials.CategoryListStart" with { 'item': item } %}
           </div>
-      {% endfor %}  
+      {% endfor %}
       <div id="introText">
           {% include category_template( 1422, lang, 13 ) ignore missing %}
       </div>
