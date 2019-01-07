@@ -106,9 +106,10 @@
           </span><span class="tabStop2">{{ item.documents[0].data.variation.number }}</span>
         </p>
         <p>
+            <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemAvailability") }}: </span>
           {% for variationProperty in item.documents[0].data.variationProperties %}
             {% if variationProperty.property.id == 9 %}
-              <span>{{ variationProperty.values.value }}</span>
+              <span class="tabStop2">{{ variationProperty.values.value }}</span>
             {% endif %}
           {% endfor %}
         </p>
@@ -140,7 +141,11 @@
               </span>
             </div>
           </div>
-        </div> 
+        </div>
+        <span class="vat">
+        {{ trans("ZisterneInfo::Template.singleItemVatTXT1") }} <span class="fa fa-arrow-right"></span>
+         <a data-toggle="modal" href="#shippingscosts" title="{{ trans("ZisterneInfo::Template.singleItemVatTXT2") }}">{{ trans("ZisterneInfo::Template.singleItemVatTXT2") }}</a>
+         </span>
         <hr>
         <button class="btn btn-block btn-primary" @click="addToBasket()">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
