@@ -82,6 +82,16 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="row">
       <div class="col-md-5 col-lg-7 single-leftside">
         <img src="{{ (item.documents[0].data.images | itemImages | orderByKey('position') | first).url }}">
@@ -96,22 +106,12 @@
           </span><span class="tabStop2">{{ item.documents[0].data.variation.number }}</span>
         </p>
         <hr>
-        <div>
-          <div class="crossprice">
-            <del class="text-muted small">
-              {{ item.documents[0].data.prices.rrp.unitPrice.formatted }}
-            </del>
-          </div>
-          <span class="price h1">
-            {{ item.documents[0].data.prices.default.unitPrice.formatted }}
-          </span>
-        </div>
         <div class="prices">
             <div class="crossprice">
               <del class="text-muted small">
                 {{ trans("ZisterneInfo::Template.UVP") }}{{ item.documents[0].data.prices.rrp.unitPrice.formatted }}
               </del>
-            </div>          
+            </div>
           <div class="price">
             <span>
               {{ item.documents[0].data.prices.default.unitPrice.formatted }}
@@ -119,7 +119,7 @@
           </div>
           <div class="base-price text-muted">
             <div>
-              {{ trans("Ceres::Template.singleItemUnitPrice") }}
+              {{ trans("Ceres::Template.singleItemUnitPrice") }}:
               <span class="base-price-value">
                 {{ item.documents[0].data.prices.default.basePrice }}
               </span>
@@ -127,9 +127,22 @@
           </div>
         </div>
         <hr>
+        <div class="bulletpoints">
+          <ul>
+            {% for variationProperty in item.documents[0].data.variationProperties %}
+              {% if variationProperty.property.id >= 5 and variationProperty.property.id <= 8 %}
+                <li>{{ variationProperty.values.value }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
       </div>
       <div class="col-md-12 col-lg-7 m-y-3">
-        <p>{{ item.documents[0].data.texts.description }}</p>
+        <p><strong>Beschreibung</strong></p>
+        {{ item.documents[0].data.texts.description }}
+        <hr>
+        <p><strong>Technische Daten</strong></p>
+        {{ item.documents[0].data.texts.technicalData }}
       </div>
     </div>
   </div>
