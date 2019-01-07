@@ -12,62 +12,126 @@
 {{ component( "ZisterneInfo::Containers.Components.ContainerItemList") }}
 {{ component( "ZisterneInfo::ItemList.Components.CategoryItem" ) }}
 
-<single-item v-cloak template="#vue-single-item" :item-data="{{ item | json_encode }}" :variation-list-data="{{ variations | json_encode }}" :attribute-name-map="{{attributeNameMap | json_encode}}">
-    <div slot="BeforePrice">{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</div>
-    <div slot="AfterPrice">{{ LayoutContainer.show("Ceres::SingleItem.AfterPrice", item.documents[0].data) }}</div>
-    <div slot="BeforeAddToBasket">{{ LayoutContainer.show("Ceres::SingleItem.BeforeAddToBasket", item.documents[0].data) }}</div>
-    <div slot="AfterAddToBasket">{{ LayoutContainer.show("Ceres::SingleItem.AfterAddToBasket", item.documents[0].data) }}</div>
-    <div slot="AdditionalContentAfterAddToBasket">{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterAddToBasket", item.documents[0].data) }}</div>
-    <div slot="AdditionalContentAfterVAT">{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterVAT", item.documents[0].data) }}</div>
-    <template slot="AddDetailTabs">{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabs", item.documents[0].data) }}</template>
-    <template slot="AddDetailTabsContent">{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabsContent", item.documents[0].data) }}</template>
-    <div slot="ItemListContainer">{{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", item) }}</div>
-    <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
-    <div slot="ImageCarousel">
-        {% set ImageCarouselOverride = LayoutContainer.show("ZisterneInfo::SingleItem.ImageCarousel") %}
-        {% if ImageCarouselOverride|trim is empty %}
-            <item-image-carousel image-url-accessor="urlSecondPreview" template="#vue-item-image-carousel"></item-image-carousel>
-        {% else %}
-            {{ ImageCarouselOverride }}
+<single-item v-cloak="v-cloak" template="#vue-single-item" :item-data="{{ item | json_encode }}" :variation-list-data="{{ variations | json_encode }}" :attribute-name-map="{{attributeNameMap | json_encode}}">
+  <div slot="BeforePrice">{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</div>
+  <div slot="AfterPrice">{{ LayoutContainer.show("Ceres::SingleItem.AfterPrice", item.documents[0].data) }}</div>
+  <div slot="BeforeAddToBasket">{{ LayoutContainer.show("Ceres::SingleItem.BeforeAddToBasket", item.documents[0].data) }}</div>
+  <div slot="AfterAddToBasket">{{ LayoutContainer.show("Ceres::SingleItem.AfterAddToBasket", item.documents[0].data) }}</div>
+  <div slot="AdditionalContentAfterAddToBasket">{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterAddToBasket", item.documents[0].data) }}</div>
+  <div slot="AdditionalContentAfterVAT">{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterVAT", item.documents[0].data) }}</div>
+  <template slot="AddDetailTabs">{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabs", item.documents[0].data) }}</template>
+  <template slot="AddDetailTabsContent">{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabsContent", item.documents[0].data) }}</template>
+  <div slot="ItemListContainer">{{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", item) }}</div>
+  <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
+  <div slot="ImageCarousel">
+    {% set ImageCarouselOverride = LayoutContainer.show("ZisterneInfo::SingleItem.ImageCarousel") %}
+    {% if ImageCarouselOverride | trim is empty %}
+      <item-image-carousel image-url-accessor="urlSecondPreview" template="#vue-item-image-carousel"></item-image-carousel>
+    {% else %}
+      {{ ImageCarouselOverride }}
+    {% endif %}
+  </div>
+  <div slot="Eigenschaft">
+    {% for variationProperty in item.documents[0].data.variationProperties %}
+      {% if variationProperty.property.id == 1 %}
+        <p>{{ variationProperty.values.value }}
+          verkauft*</p>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div slot="Lieferzeit">
+    {% for variationProperty in item.documents[0].data.variationProperties %}
+      {% if variationProperty.property.id == 9 %}
+        <span>{{ variationProperty.values.value }}</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="bulletpoints" slot="Bulletpoints">
+    <ul>
+      {% for variationProperty in item.documents[0].data.variationProperties %}
+        {% if variationProperty.property.id >= 5 and variationProperty.property.id <= 8 %}
+          <li>{{ variationProperty.values.value }}</li>
         {% endif %}
-    </div>
-    <div slot="Eigenschaft">
-      {%  for variationProperty in item.documents[0].data.variationProperties %}
-      	 {% if variationProperty.property.id == 1 %}
-      	   <p>{{ variationProperty.values.value }} verkauft*</p>
-      	{% endif %}
       {% endfor %}
-      </div>
+    </ul>
+  </div>
 
-      <div slot="Lieferzeit">
-        {%  for variationProperty in item.documents[0].data.variationProperties %}
-        	 {% if variationProperty.property.id == 9 %}
-        	   <span>{{ variationProperty.values.value }}</span>
-        	{% endif %}
-        {% endfor %}
-        </div>
-
-      <div class="bulletpoints" slot="Bulletpoints">
-        <ul>
-        {%  for variationProperty in item.documents[0].data.variationProperties %}
-           {% if variationProperty.property.id >= 5 and variationProperty.property.id <= 8  %}
-             <li>{{ variationProperty.values.value }}</li>
-           {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-
-
-      <p class="downloads" slot="Download">
-        {%  for variationProperty in item.documents[0].data.variationProperties %}
-           {% if variationProperty.property.id == 4 %}
-             <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}: </span><span class="downloadDatei hidden">{{ variationProperty.values.value }}</span>
-             <span class="tabStop2"><ul class="data"><li>&nbsp;</li></ul></span>
-          {% endif %}
-        {% endfor %}
-      </p>
-      <div slot="CrossSellingAccessory">
-         {{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", accessory) }}
-         <container-item-list :items="{{ accessory| json_encode }}"></container-item-list>
-     </div>
+  <p class="downloads" slot="Download">
+    {% for variationProperty in item.documents[0].data.variationProperties %}
+      {% if variationProperty.property.id == 4 %}
+        <span class="tabStop">{{ trans("ZisterneInfo::Template.singleItemDownloads") }}:
+        </span><span class="downloadDatei hidden">{{ variationProperty.values.value }}</span>
+        <span class="tabStop2">
+          <ul class="data">
+            <li>&nbsp;</li>
+          </ul>
+        </span>
+      {% endif %}
+    {% endfor %}
+  </p>
+  <div slot="CrossSellingAccessory">
+    {{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", accessory) }}
+    <container-item-list :items="{{ accessory| json_encode }}"></container-item-list>
+  </div>
 </single-item>
+<noscript>
+  <div class="single container-max page-content">
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-md-5 col-lg-7 single-leftside">
+        <img src="{{ (item.documents[0].data.images | itemImages | orderByKey('position') | first).url }}">
+      </div>
+      <div class="col-md-7 col-lg-5 single-rightside">
+        <h1>{{ item.documents[0].data | itemName }}</h1>
+        <hr>
+        <p>{{ item.documents[0].data.texts.shortDescription }}</p>
+        <hr>
+        <p class="articlenumber">
+          <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}:
+          </span><span class="tabStop2">{{ item.documents[0].data.variation.number }}</span>
+        </p>
+        <hr>
+        <div>
+          <div class="crossprice">
+            <del class="text-muted small">
+              {{ item.documents[0].data.prices.rrp.unitPrice.formatted }}
+            </del>
+          </div>
+          <span class="price h1">
+            {{ item.documents[0].data.prices.default.unitPrice.formatted }}
+          </span>
+        </div>
+        <div class="prices">
+          {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+            <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.price.value > 0 && currentVariation.prices.rrp.price.value > currentVariation.prices.default.price.value">
+              <del class="text-muted small">
+                {{ trans("ZisterneInfo::Template.UVP") }}{{ item.documents[0].data.prices.rrp.unitPrice.formatted }}
+              </del>
+            </div>
+          {% endif %}
+          <div class="price">
+            <span>
+              {{ item.documents[0].data.prices.default.unitPrice.formatted }}
+            </span>
+          </div>
+          <div class="base-price text-muted" v-if="currentVariation.unit">
+            <div>
+              {{ trans("Ceres::Template.singleItemUnitPrice") }}
+              <span class="base-price-value">
+                {{ item.documents[0].data.prices.default.basePrice }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="col-md-12 col-lg-7 m-y-3">
+        <p>{{ item.documents[0].data.texts.description }}</p>
+      </div>
+    </div>
+  </div>
+  </noscript>
