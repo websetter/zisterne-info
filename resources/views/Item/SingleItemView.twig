@@ -105,6 +105,13 @@
           <span class="tabStop">{{ trans("Ceres::Template.singleItemNumber") }}:
           </span><span class="tabStop2">{{ item.documents[0].data.variation.number }}</span>
         </p>
+        <p>
+          {% for variationProperty in item.documents[0].data.variationProperties %}
+            {% if variationProperty.property.id == 9 %}
+              <span>{{ variationProperty.values.value }}</span>
+            {% endif %}
+          {% endfor %}
+        </p>
         <hr>
         <div class="prices">
             <div class="crossprice">
@@ -117,6 +124,14 @@
               {{ item.documents[0].data.prices.default.unitPrice.formatted }}
             </span>
           </div>
+          <div class="sold">
+            {% for variationProperty in item.documents[0].data.variationProperties %}
+              {% if variationProperty.property.id == 1 %}
+                <p>{{ variationProperty.values.value }}
+                  verkauft*</p>
+              {% endif %}
+            {% endfor %}
+          </div>
           <div class="base-price text-muted">
             <div>
               {{ trans("Ceres::Template.singleItemUnitPrice") }}:
@@ -125,8 +140,12 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> 
         <hr>
+        <button class="btn btn-block btn-primary" @click="addToBasket()">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            {{ trans("Ceres::Template.singleItemAddToBasket") }}
+        </button>
         <div class="bulletpoints">
           <ul>
             {% for variationProperty in item.documents[0].data.variationProperties %}
