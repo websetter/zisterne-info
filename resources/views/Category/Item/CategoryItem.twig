@@ -19,13 +19,11 @@
   <div class="row">
     {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
       <aside class="col-xs-12 col-md-3" v-stick-in-parent>
-        <!--
         <div class="sidebar-categories hidden-md-down">
-        <p class="asideHeadline">Kategorien</p>
-          {{ include('Regentonnenshop::PageDesign.Partials.Header.SideNavigation.twig') }}
-      </div>
-      {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
-        -->
+          <p class="asideHeadline">Kategorien</p>
+            {{ include('ZisterneInfo::PageDesign.Partials.Header.SideNavigation.twig') }}
+        </div>
+        {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
         <div class="filterPanel">
             <p class="asideHeadline">Produktfilter</p>
             {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
@@ -34,7 +32,7 @@
             {% else %}
                 {{ overrideSearchFilters }}
             {% endif %}
-            <item-filter-tag-list></item-filter-tag-list>
+            <item-filter-tag-list></item-filter-tag-list
           </div>
             <p class="asideHeadline">Sortierung</p>
           <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
@@ -50,7 +48,7 @@
               <h1 class="category-title">{{ category.details[0].name }}</h1>
               <h2 class="category-subtitle">{{ category.details[0].shortDescription | raw }}</h2>
             </div>
-            <img src="/documents/{{category.details[0].image2Path}}" alt="{{ category.details[0].name }}" title="{{ category.details[0].name }}">
+            <img src="/documents/{{category.details[0].image2Path}}" alt="">
           </div>
           <div id="category-description-container" class="category-description">{{ category.details[0].description | raw }}</div>
 
@@ -105,6 +103,4 @@
     <meta name="keywords" content="{{ category.details[0].metaKeywords }}">
 
     <meta name="robots" content="{{ metaRobots }}">
-
-    
 {% endblock %}
