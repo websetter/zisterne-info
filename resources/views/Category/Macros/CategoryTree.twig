@@ -73,7 +73,7 @@
             {% else %}
 
                 <li>
-                    <a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', alwaysOpen: true, scrollToTop: 600 }">{{ category.details[0].name }}</a>
+                    <a title="{{ category.details[0].name }}" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" v-render-category="{ id: {{ category.id }}, type: '{{ category.type }}', alwaysOpen: true, scrollToTop: 600 }">{{ category.details[0].name }}</a>
                 </li>
 
             {% endif %}
