@@ -18,7 +18,14 @@
 <div class="container">
   <div class="row">
     {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
-      <aside class="col-xs-12 col-md-3" v-stick-in-parent>      
+      <aside class="col-xs-12 col-md-3" v-stick-in-parent>
+        <!--
+        <div class="sidebar-categories hidden-md-down">
+        <p class="asideHeadline">Kategorien</p>
+          {{ include('Regentonnenshop::PageDesign.Partials.Header.SideNavigation.twig') }}
+      </div>
+      {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
+        -->
         <div class="filterPanel">
             <p class="asideHeadline">Produktfilter</p>
             {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
@@ -27,7 +34,7 @@
             {% else %}
                 {{ overrideSearchFilters }}
             {% endif %}
-            <item-filter-tag-list></item-filter-tag-list
+            <item-filter-tag-list></item-filter-tag-list>
           </div>
             <p class="asideHeadline">Sortierung</p>
           <item-list-sorting template="#vue-item-list-sorting" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
@@ -98,4 +105,11 @@
     <meta name="keywords" content="{{ category.details[0].metaKeywords }}">
 
     <meta name="robots" content="{{ metaRobots }}">
+
+    <meta property="og:title" content="{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %} | {{ trans("Ceres::Template.headerCompanyName") }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ category.details[0].url }}"/>
+    <meta property="og:image"
+          content="https://cdn02.plentymarkets.com/yi9z0xbw5t14/frontend/zisternenfilter/ceres/img/zisternenfilter-logo.png"/>
+    <meta property="og:description" content="{{ category.details[0].metaDescription }}"/>
 {% endblock %}
