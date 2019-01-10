@@ -1,6 +1,7 @@
 {% extends getPartial('page-design') %}
 {% import "Ceres::Category.Macros.CategoryTree" as Tree %}
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% set companyLogo  = config("Ceres.header.company_logo") %}
 
 {% block PageBody %}
 
@@ -103,5 +104,7 @@
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="https//:www.zisterne.info/{{ category.details[0].nameUrl }}/"/>
     <meta property="og:description" content="{{ category.details[0].metaDescription }}"/>
+    <meta property="og:image"
+          content="{% if ('http' in companyLogo) or ('layout/' in companyLogo) %}{{ companyLogo }}{% else %}{{ plugin_path('Ceres') }}/{{ companyLogo }}{% endif %}"/>
 
 {% endblock %}
