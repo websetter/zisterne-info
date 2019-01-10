@@ -36,6 +36,7 @@
               template="#vue-items-per-page"
               :pagination-values="{{ searchOptions.itemsPerPage | json_encode }}"></items-per-page>
       </aside>
+      <button class="filterMe visible-sm-down">Filter<span class="fa fa-filter"></span></button>
     {% endif %}
 
     <main class="{% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}col-md-9 {% endif %}col-xs-12 categoriegrid page-content categoryItem cat-id-{{ category.id}}">
