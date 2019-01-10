@@ -18,7 +18,7 @@
 <div class="container">
   <div class="row">
     {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
-      <aside class="col-xs-12 col-md-3" v-stick-in-parent>        
+      <aside class="col-xs-12 col-md-3" v-stick-in-parent>
         <div class="filterPanel">
             <p class="asideHeadline">Produktfilter</p>
             {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
@@ -92,10 +92,16 @@
         <link rel="next" href="{{ webstoreConfig.domainSsl }}?{{ query | merge({'page' : currentPage+1 }) | url_encode }}" />
     {% endif %}
 
-    <title>{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %} | {{ trans("Ceres::Template.headerCompanyName") }}</title>
+    <title>{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}</title>
 
     <meta name="description" content="{{ category.details[0].metaDescription }}">
     <meta name="keywords" content="{{ category.details[0].metaKeywords }}">
 
     <meta name="robots" content="{{ metaRobots }}">
+
+    <meta property="og:title" content="{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ category.details[0].url }}"/>
+    <meta property="og:description" content="{{ category.details[0].metaDescription }}"/>
+
 {% endblock %}
