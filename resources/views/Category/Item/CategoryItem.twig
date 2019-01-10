@@ -101,7 +101,7 @@
 
     <meta property="og:title" content="{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="{{ category.id }}"/>
+    <meta property="og:url" content="{{ category.url }}"/>
     <meta property="og:description" content="{{ category.details[0].metaDescription }}"/>
 
 {% endblock %}
