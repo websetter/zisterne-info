@@ -18,12 +18,7 @@
 <div class="container">
   <div class="row">
     {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
-      <aside class="col-xs-12 col-md-3" v-stick-in-parent>
-        <div class="sidebar-categories hidden-md-down">
-          <p class="asideHeadline">Kategorien</p>
-            {{ include('ZisterneInfo::PageDesign.Partials.Header.SideNavigation.twig') }}
-        </div>
-        {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
+      <aside class="col-xs-12 col-md-3" v-stick-in-parent>        
         <div class="filterPanel">
             <p class="asideHeadline">Produktfilter</p>
             {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
