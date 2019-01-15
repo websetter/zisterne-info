@@ -79,15 +79,14 @@
 
 {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
     <link data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ plugin_path('Ceres') }}/css/ceres.scss" rel="stylesheet" href="{{ plugin_path('Ceres') }}/css/ceres.css">
-    <!--<link rel="stylesheet" href="{{ plugin_path('ZisterneInfo') }}/css/main.css">-->
 {% endif %}
 
 {{ LayoutContainer.show("Ceres::Template.StyleOverwrite") }}
 
 
 <link rel="stylesheet" href="https://cdn02.plentymarkets.com/yi9z0xbw5t14/frontend/zisterneInfo/ceres/css/template.css">
-<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="/layout/zisterne/ceres/js/werk38.js"></script>
+<script defer src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script defer type="text/javascript" src="/layout/zisterne/ceres/js/werk38.js"></script>
 
 <!-- Extend the existing style with a template -->
 {{ LayoutContainer.show("Ceres::Template.Style") }}

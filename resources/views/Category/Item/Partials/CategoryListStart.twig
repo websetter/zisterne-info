@@ -1,4 +1,5 @@
 {{ component( "ZisterneInfo::Basket.Components.AddToBasket" ) }}
+{{ component("Ceres::ItemList.Components.ItemLazyImg") }}
 
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
@@ -23,7 +24,8 @@
                         item-url="{{ itemUrl }}"
                         :show-dots="{{ ceresConfig.item.categoryShowDots | json_encode }}"
                         :show-nav="{{ ceresConfig.item.categoryShowNav | json_encode }}"
-                        :enable-carousel="{{ enableCarousel | json_encode }}">
+                        :enable-carousel="{{ enableCarousel | json_encode }}"
+                        :disable-lazy-load="false">
                     </category-image-carousel>
 
                     <noscript>

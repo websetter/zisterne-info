@@ -51,36 +51,12 @@
           </div>
 
           {{ HomeContent.details.first.description | raw }}
+
       <div class="row">
         <div class="col-xs-12 col-lg-6 bigCategoryLeft">
               <div>  {{ HomeContent.details.first.description2 | raw }}</div>
         </div>
         <div class="col-xs-12 col-lg-6 articleShow">
-          {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
-          {% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
-              <div class="m-b-2 clearfix">
-                  {% if homepageContainer6 | trim is empty %}
-                      <div class="section-header m-b-1">
-                          <h2>{{ category3.details[0].name }}</h2>
-                          <a href="{{ services.category.getURL(category3, lang) }}"
-                             class="section-link-all"><i
-                                      class="fa fa-angle-double-right"
-                                      aria-hidden="true"></i> {{ trans("Ceres::Template.homepageShowAll") }}</a>
-                      </div>
-                      <ul class="product-list row grid">
-                          {% for item in categoryList1 %}
-                              <li class="col-xs-12 col-sm-6 col-md-6 col-lg-3 startArt">
-                                  {% include "Ceres::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
-                              </li>
-                          {% endfor %}
-                      </ul>
-                  {% else %}
-                      {{ homepageContainer6 }}
-                  {% endif %}
-              </div>
-          {% endif %}
-
-          <!-- -->
           <div class="row">
             {% set list = services.itemList.getItemList( 'tag_list', 1, null, 4).documents %}
             {% for items in list %}
