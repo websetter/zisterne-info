@@ -104,9 +104,14 @@
 
     <meta property="og:title" content="{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https//:www.zisterne.info/{{ category.details[0].nameUrl }}/"/>
+    <meta property="og:url" content="{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}/{{ category.details[0].nameUrl }}/"/>
     <meta property="og:description" content="{{ category.details[0].metaDescription }}"/>
-    <meta property="og:image"
-          content="{% if ('http' in companyLogo) or ('layout/' in companyLogo) %}{{ companyLogo }}{% else %}{{ plugin_path('Ceres') }}/{{ companyLogo }}{% endif %}"/>
+    <meta property="og:image" content="/documents/{{category.details[0].image2Path}}"/>
+
+    <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}/{{ category.details[0].nameUrl }}/">
+  <meta name="twitter:title" content="{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}">
+  <meta name="twitter:description" content="{{ category.details[0].metaDescription }}">
+  <meta name="twitter:image" content="/documents/{{category.details[0].image2Path}}">
 
 {% endblock %}
