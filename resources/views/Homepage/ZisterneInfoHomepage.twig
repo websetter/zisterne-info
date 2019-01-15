@@ -1,6 +1,7 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
 
+
 {% set overrideHomepageContainer = "" %}
 {% for content in container("Ceres::Homepage") if content.plugin != "Plenty" %}
     {% set overrideHomepageContainer = overrideHomepageContainer ~ content.result %}
@@ -40,6 +41,7 @@
     {% set categoryList2 = paginatedCategoryList2.documents %}
 
     {{ component( "Ceres::ItemList.Components.ItemList") }}
+    {{ component("Ceres::ItemList.Components.ItemLazyImg") }}
     {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
     {{ component( "ZisterneInfo::Basket.Components.AddToBasket" ) }}
 
