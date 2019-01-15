@@ -41,6 +41,7 @@
     {% set categoryList2 = paginatedCategoryList2.documents %}
 
     {{ component( "Ceres::ItemList.Components.ItemList") }}
+    {{ component("Ceres::ItemList.Components.ItemLazyImg") }}
     {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
     {{ component( "ZisterneInfo::Basket.Components.AddToBasket" ) }}
 
