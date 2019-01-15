@@ -39,5 +39,13 @@
             "name"          :"Third item list",
             "description"   :"Display a configurable list of items in your online store"
         }
-    ]
+      ],
+      "containers"        :
+      [
+          {
+              "key"           : "BasketOverlay.ItemList",
+              "name"          : "Basket Overlay: Artikelliste",
+              "description"   : "Add additional ItemList in the Basket Overlay."
+          }
+      ]
 }
