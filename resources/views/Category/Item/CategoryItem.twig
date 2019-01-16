@@ -39,6 +39,9 @@
     {% endif %}
 
     <main class="{% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}col-md-9 {% endif %}col-xs-12 categoriegrid page-content categoryItem cat-id-{{ category.id}}">
+        <div id="breadcrumbs">
+          {% include "ZisterneInfo::PageDesign.Partials.Header.Breadcrumb" %}
+        </div>
         <div class="catPic">
             <div class="catIntro">
               <h1 class="category-title">{{ category.details[0].name }}</h1>
