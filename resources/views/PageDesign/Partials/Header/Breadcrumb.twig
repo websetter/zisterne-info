@@ -26,7 +26,7 @@
             {% set lastCategory = categoryBreadcrumbs | last %}
             {% if lastCategory.details is defined %}
                 <li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                  <a itemprop="item" href="{{ lastCategory.url ) }}"><span>{{ lastCategory.details[0].name }}</span></a>
+                  <a itemprop="item" href="{{ lastCategory.url }}"><span>{{ lastCategory.details[0].name }}</span></a>
                   <meta itemprop="position" content="{{count}}" />
                 </li>
             {% else %}
