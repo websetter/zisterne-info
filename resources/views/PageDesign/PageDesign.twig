@@ -22,6 +22,39 @@
 <head>
     {% include getPartial('head') %}
 
+    <script type="application/ld+json" > {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Zisterne.info",
+        "url": "http://www.zisterne.info",
+        "contactPoint": [{
+            "@type": "ContactPoint",
+            "telephone": "+01728068070",
+            "contactType": "customer service",
+            "contactOption": "TollFree",
+            "areaServed": "DE",
+            "availableLanguage": ["German"],
+            "hoursAvailable": [{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday"
+                ],
+                "opens": "07:30",
+                "closes": "16:30"
+            }, {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Firday"
+                ],
+                "opens": "07:30",
+                "closes": "14:00"
+            }]
+        }]
+    }
+</script>
     {% block PartialHead %}
     {% endblock %}
 
