@@ -4,24 +4,37 @@
 {% if categoryBreadcrumbs is not empty %}
     <nav data-component="breadcrumbs" data-renderer="twig" class="container-max small">
         <ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                <span>Sie sind hier:&nbsp;</span><a itemprop="item" title="zur Startseite" href="/"><span class="fa fa-home"></span></a>
-            </li>
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              <span>Sie sind hier:&nbsp;</span><a itemprop="item" title="zur Startseite" href="/"><span class="fa fa-home"><span itemprop="name" class="sr-only">Home</span></span></a>
+                <meta itemprop="position" content="1" />
+          </li>
 
-            {% set break = false %}
-            {% set count = 1 %}
-            {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length ] if not break %}
-                {% if category.details[0] %}
-                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemprop="item" href="{{ services.category.getURLById( category.id ) }}"><span itemprop="name">{{ category.details[0].name }}</span></a>
-                        <meta itemprop="position" content="{{count}}" />
-                    </li>
-                {% else %}
-                    {% set break = true %}
-                {% endif %}
-                {% set count = count + 1 %}
-            {% endfor %}
+          {% set break = false %}
+          {% set count = 2 %}
+          {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length ] if not break %}
+              {% if category.details[0] %}
+                  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                      <a itemprop="item" href="{{ services.category.getURLById( category.id ) }}"><span itemprop="name">{{ category.details[0].name }}</span></a>
+                      <meta itemprop="position" content="{{count}}" />
+                  </li>
+              {% else %}
+                  {% set break = true %}
+              {% endif %}
+              {% set count = count + 1 %}
+          {% endfor %}
 
+            {% set lastCategory = categoryBreadcrumbs | last %}
+            {% if lastCategory.details is defined %}
+                <li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                  <a itemprop="item" href="{{ lastCategory.url ) }}"><span>{{ lastCategory.details[0].name }}</span></a>
+                  <meta itemprop="position" content="{{count}}" />
+                </li>
+            {% else %}
+                <li class="breadcrumb-item active" v-cloak v-if="$store.state.item.variation.documents" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                      <a itemprop="item" href="#"><span>${ $store.state.item.variation.documents[0].data | itemName }</span></a>
+                      <meta itemprop="position" content="{{count}}" />
+                </li>
+            {% endif %}
         </ul>
     </nav>
 {% endif %}
