@@ -11,7 +11,7 @@
 
           {% set break = false %}
           {% set count = 2 %}
-          {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length ] if not break %}
+          {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length - 1 ] if not break %}
               {% if category.details[0] %}
                   <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                       <a itemprop="item" href="{{ services.category.getURLById( category.id ) }}"><span itemprop="name">{{ category.details[0].name }}</span></a>
