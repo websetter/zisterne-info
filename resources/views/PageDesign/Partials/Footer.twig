@@ -1,14 +1,17 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% set isHome = services.template.isHome() %}
 {% if footerContent is not defined %}
   {% set footerContent = services.category.get(1421, lang) %}
 {% endif %}
 <footer>
+  {% if isHome %}
   <div class="container-max footerTop">
     <hr>
     <div class="row">
       {{ footerContent.details.first.description | raw }}
     </div>
   </div>
+  {% endif %}
   <div class="footerMiddle">
       <div class="container-max">
           {{ footerContent.details.first.description2 | raw }}

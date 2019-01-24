@@ -23,37 +23,42 @@
     {% include getPartial('head') %}
 
     <script type="application/ld+json" > {
-        "@context": "http://schema.org",
-        "@type": "Organization",
-        "name": "Zisterne.info",
-        "url": "http://www.zisterne.info",
-        "contactPoint": [{
-            "@type": "ContactPoint",
-            "telephone": "+01728068070",
-            "contactType": "customer service",
-            "contactOption": "TollFree",
-            "areaServed": "DE",
-            "availableLanguage": ["German"],
-            "hoursAvailable": [{
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday"
-                ],
-                "opens": "07:30",
-                "closes": "16:30"
-            }, {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "Firday"
-                ],
-                "opens": "07:30",
-                "closes": "14:00"
-            }]
-        }]
-    }
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Zisterne.Info",
+      "url": "https://www.zisterne.info",
+      "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+4971628068070",
+          "contactType": "customer service",
+          "contactOption": "TollFree",
+          "areaServed": "DE",
+          "availableLanguage": ["German"]
+      }]
+  }
+</script>
+
+<script type="application/ld+json" > {
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Zisterne.Info",
+  "openingHours": [
+      "Mo-Th 07:30-12:30",
+      "Mo-Th 13:00-16:30",
+      "Fr 07:30-12:30",
+      "Fr 13:00-14:00"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Großrinderfeld",
+      "addressRegion": "Germany",
+      "postalCode": "97950",
+      "streetAddress": "Frankenstrasse 43"
+    },
+    "telephone": "+4971628068070",
+    "url": "https://www.zisterne.infp",
+    "image": {% if ('http' in companyLogo) or ('layout/' in companyLogo) %}"{{ companyLogo }}"{% else %}"{{ plugin_path('Ceres') }}/{{ companyLogo }}"{% endif %}
+}
 </script>
     {% block PartialHead %}
     {% endblock %}
